@@ -1,0 +1,138 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #e9f5f0;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.navbar a {
+  color: rgb(39, 137, 95);
+  text-decoration: none;
+  margin: 0 15px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+.navbar a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.main-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
+
+.des-container {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  background-color: blue;
+  width: 80%;
+  height: 90%;
+  margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 5%;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 5%;
+}
+
+.card {
+  position: fixed;
+  width: 320px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 32px;
+}
+
+.card-header {
+  position: relative;
+  background-color: #f4f4f9;
+}
+
+.card-header img {
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h2 {
+  margin: 10px 0 5px;
+  font-size: 24px;
+  color: #333;
+}
+
+.card-body p {
+  margin: 0;
+  font-size: 16px;
+  color: #7fc241;
+}
+
+.social-icons {
+  margin: 15px 0;
+}
+
+.social-icons a {
+  margin: 0 8px;
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #7fc241;
+}
+
+.card-footer {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.card-footer button {
+  flex: 1;
+  padding: 12px;
+  background-color: white;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.card-footer button:hover {
+  background-color: #f4f4f9;
+}
+
+.card-footer button i {
+  margin-left: 5px;
+}
+
+.divider {
+  width: 1px;
+  background-color: #eee;
+}
