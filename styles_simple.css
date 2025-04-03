@@ -96,3 +96,15 @@ body {
     margin-left: 20%;
     margin-right: 20%;
 }
+
+.container-travel {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to move to the next row */
+  gap: 10px; /* Space between items */
+  padding: 10px;
+}
+
+.item-travel {
+  width: 600px;
+  margin: 20px;
+}
