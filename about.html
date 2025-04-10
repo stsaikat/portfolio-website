@@ -1,52 +1,159 @@
 <!DOCTYPE html>
-<html lang="en" style="font-family: 'Arial', sans-serif;">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunipun Talukder</title>
-    <link rel="stylesheet" href="styles_simple.css">
-    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+    <title>About - Sunipun Talukder</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/assets/vendors/themify-icons/css/themify-icons.css">
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="navbar-brand">
-            <span class="name"></span>
-        </div>
-        <div class="navbar-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="competitive_programming.html">Competitive Programming</a>
-            <a href="assets/resume/Sunipun_Talukder.pdf" target="_blank">Resume</a>
-            <a href="travel.html">Travel</a>
-            <a href="#">Blog</a>
-            <a href="#">Misc</a>
+        <div class="nav-container container">
+            <a href="index.html" class="navbar-brand">Sunipun Talukder</a>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="navbar-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="competitive_programming.html">CP</a>
+                <a href="travel.html">Travel</a>
+                <a href="assets/resume/Sunipun_Talukder.pdf" target="_blank">Resume</a>
+            </div>
         </div>
     </nav>
 
-    <div class="profile-card-about">
-        <img src="assets/imgs/profile.jpg" alt="Profile Picture" class="profile-pic" />
-        <div class="profile-info">
-          <h1>Sunipun Talukder</h1>
-          <p class="title">AI Engineer, BrainCraft Ltd</p>
-          <p class="email">talukdersunipun@gmail.com</p>
+    <main>
+        <section class="section about-hero">
+            <div class="container">
+                <div class="profile-header">
+                    <div class="profile-container">
+                        <img src="assets/imgs/profile.jpg" alt="Sunipun Talukder" class="profile-image">
+                    </div>
+                    <div class="profile-info">
+                        <h1>About Me</h1>
+                        <p class="lead">AI Engineer @ BrainCraft Ltd</p>
+                        <div class="social-links">
+                            <a href="https://github.com/sunipun" target="_blank">
+                                <i data-feather="github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="mailto:talukdersunipun@gmail.com">
+                                <i data-feather="mail"></i>
+                                <span>Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section experience-section">
+            <div class="container">
+                <div class="grid grid-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Professional Experience</h2>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <h3>AI Engineer</h3>
+                                    <p class="company">BrainCraft Ltd</p>
+                                    <p class="period">2023 - Present</p>
+                                    <ul class="achievements">
+                                        <li>Developed Cartoon AI, an iOS app for artistic photo transformations using advanced AI models</li>
+                                        <li>Implemented GIF Maker app with video to GIF conversion capabilities</li>
+                                        <li>Created Add Music to Video app with audio mixing and video editing features</li>
+                                        <li>Built Video Intro Maker with customizable templates and effects</li>
+                                    </ul>
+                                </div>
+                                <div class="timeline-item">
+                                    <h3>Software Engineer</h3>
+                                    <p class="company">LiiLab</p>
+                                    <p class="period">2022 - 2023</p>
+                                    <ul class="achievements">
+                                        <li>Developed GK Quiz app achieving over 100k downloads on Play Store</li>
+                                        <li>Optimized rank list functionality using Firebase Realtime Database</li>
+                                        <li>Improved app performance by 4x through database optimization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Education & Skills</h2>
+                            <div class="education">
+                                <h3>Shahjalal University of Science And Technology</h3>
+                                <p>Bachelor's in Mathematics</p>
+                            </div>
+                            <div class="skills mt-4">
+                                <h3>Technical Skills</h3>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Java</span>
+                                    <span class="skill-tag">C++</span>
+                                    <span class="skill-tag">Android Development</span>
+                                    <span class="skill-tag">iOS Development</span>
+                                    <span class="skill-tag">Machine Learning</span>
+                                    <span class="skill-tag">Firebase</span>
+                                    <span class="skill-tag">OpenGL</span>
+                                    <span class="skill-tag">Computer Vision</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section achievements-section">
+            <div class="container">
+                <h2 class="section-title">Competitive Programming</h2>
+                <div class="grid grid-3">
+                    <div class="achievement-card">
+                        <i data-feather="code"></i>
+                        <h3>Codeforces</h3>
+                        <p>Active participant with strong problem-solving skills</p>
+                        <a href="https://codeforces.com/profile/stsaikat" target="_blank" class="btn btn-primary">View Profile</a>
+                    </div>
+                    <div class="achievement-card">
+                        <i data-feather="award"></i>
+                        <h3>CodeChef</h3>
+                        <p>Regular contestant in competitive programming challenges</p>
+                        <a href="https://www.codechef.com/users/thestsaikat" target="_blank" class="btn btn-primary">View Profile</a>
+                    </div>
+                    <div class="achievement-card">
+                        <i data-feather="check-circle"></i>
+                        <h3>LeetCode</h3>
+                        <p>Solved numerous algorithmic problems</p>
+                        <a href="https://leetcode.com/sunipun/" target="_blank" class="btn btn-primary">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sunipun Talukder. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <div class="intro-info">
-        <p>
-            A passionate problem solver. Love to learn new things and technology. Passionate about making things precisely accurate. Love to work behind amazing innovations.
-            <br><br>
-            I am a dedicated Software Engineer with a strong foundation in competitive programming and a passion for creating innovative solutions. My journey began at Shahjalal University of Science And Technology, where I earned a Bachelor's degree in Mathematics while actively participating and excelling in competitive programming contests like ACM-ICPC, Codeforces, and CodeChef.
-            <br><br>
-            Following my academic pursuits, I brought my programming prowess to LiiLab, where I served as a Software Engineer. During my tenure, I successfully architected and developed the Intro Maker app, showcasing my skills in leveraging Canvas and Native Android APIs. This endeavor resulted in an impressive milestone of over 100k downloads on the Play Store. Additionally, I optimized GkQuiz's rank list functionality, utilizing Firebase Realtime Database and Firestore to achieve a remarkable 4x performance boost, attracting a substantial user base.
-            <br><br>
-            Currently, I am contributing my expertise to BrainCraft Ltd. as a Software Engineer. In this role, I have designed and implemented key features, such as an Image to Video module, using OpenGLES and MediaCodec API. My contributions have led to over 250,000 downloads on the Google Play Store.
-            <br><br>
-            Throughout my journey, I've honed my skills in various programming languages, databases, and machine learning frameworks. My commitment to excellence extends beyond my professional endeavors, as I actively engage in voluntary activities, serving as a Moderator & Trainer at Euclid Programming Club and contributing as an Admin and Executive at Shuddho Social Organization.
-        </p>
-    </div>
+    <script>
+        feather.replace();
+        
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-links').classList.toggle('active');
+        });
+    </script>
 </body>
-
 </html>
