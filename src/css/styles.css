@@ -1064,4 +1064,74 @@ img {
     .cp-card-body {
         padding: 1.5rem;
     }
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.primary-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.contact-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    min-width: 120px;
+    justify-content: center;
+}
+
+.contact-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.contact-btn i {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 768px) {
+    .action-buttons {
+        gap: 1.5rem;
+    }
+
+    .primary-actions {
+        flex-direction: column;
+    }
+
+    .primary-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+    }
+
+    .contact-btn {
+        width: 100%;
+    }
 } 
