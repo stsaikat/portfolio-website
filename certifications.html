@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Sunipun Talukder</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/assets/vendors/themify-icons/css/themify-icons.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="navbar-brand">Sunipun Talukder</a>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="navbar-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="competitive_programming.html">CP</a>
+                <a href="certifications.html" class="active">Certifications</a>
+                <a href="assets/resume/Sunipun_Talukder.pdf" target="_blank">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section certifications-hero">
+            <div class="container">
+                <h1>Certifications</h1>
+                <p class="lead">Professional certifications and achievements</p>
+            </div>
+        </section>
+
+        <section class="section certifications-section">
+            <div class="container">
+                <div class="certification-category">
+                    <h2>Demo Certifications</h2>
+                    <div class="certification-grid">
+                        <div class="certification-card">
+                            <div class="certification-header">
+                                <i data-feather="award"></i>
+                                <h3>Demo Certification 1</h3>
+                            </div>
+                            <div class="certification-body">
+                                <p class="issuer">Demo Organization</p>
+                                <p class="date">Coming Soon</p>
+                                <p class="description">This is a placeholder for future certifications.</p>
+                                <a href="#" class="btn btn-outline">View Certificate</a>
+                            </div>
+                        </div>
+
+                        <div class="certification-card">
+                            <div class="certification-header">
+                                <i data-feather="award"></i>
+                                <h3>Demo Certification 2</h3>
+                            </div>
+                            <div class="certification-body">
+                                <p class="issuer">Demo Institution</p>
+                                <p class="date">Coming Soon</p>
+                                <p class="description">This is a placeholder for future certifications.</p>
+                                <a href="#" class="btn btn-outline">View Certificate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sunipun Talukder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 
