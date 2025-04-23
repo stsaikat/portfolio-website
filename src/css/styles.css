@@ -1259,34 +1259,38 @@ img {
 }
 
 .certification-card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .certification-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 .certification-header {
-    padding: 1.5rem;
+    padding: 1.25rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
 }
 
 .certification-header i {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
+    stroke-width: 2.5;
 }
 
 .certification-header h3 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .certification-body {
@@ -1296,36 +1300,90 @@ img {
 .certification-body .issuer {
     color: var(--primary-color);
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
 }
 
 .certification-body .date {
-    color: var(--text-secondary);
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+}
+
+.certification-body .rating,
+.certification-body .duration,
+.certification-body .achievement {
+    color: #444;
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+}
+
+.certification-body .rating::before {
+    content: "★";
+    color: #ffc107;
+    font-size: 1.1rem;
+}
+
+.certification-body .duration::before {
+    content: "⏱";
+    font-size: 1.1rem;
+}
+
+.certification-body .achievement::before {
+    content: "✓";
+    color: #28a745;
+    font-size: 1.1rem;
 }
 
 .certification-body .description {
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    color: #444;
+    margin: 1rem 0;
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .certification-body .btn {
     width: 100%;
     text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.certification-body .btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-    .certifications-hero {
-        padding: 100px 0 40px;
+    .certification-card {
+        border-radius: 12px;
     }
 
-    .certifications-hero h1 {
-        font-size: 2.5rem;
+    .certification-header {
+        padding: 1rem;
     }
 
-    .certification-grid {
-        grid-template-columns: 1fr;
+    .certification-body {
+        padding: 1.25rem;
+    }
+
+    .certification-body .rating,
+    .certification-body .duration,
+    .certification-body .achievement {
+        font-size: 0.85rem;
+        padding: 0.4rem;
     }
 } 
