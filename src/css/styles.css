@@ -1256,6 +1256,8 @@ img {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .certification-card {
@@ -1265,6 +1267,9 @@ img {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 .certification-card:hover {
@@ -1274,7 +1279,7 @@ img {
 
 .certification-header {
     padding: 1.25rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, #0984e3, #0984e3);
     color: white;
     display: flex;
     align-items: center;
