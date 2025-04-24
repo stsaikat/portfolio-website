@@ -1,3 +1,5 @@
+@import 'blog.css';
+
 /* Variables */
 :root {
     --primary-color: #0984e3;
@@ -187,6 +189,7 @@ img {
     font-size: 2.5rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 1rem;
 }
@@ -1261,6 +1264,7 @@ img {
     margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 

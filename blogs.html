@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunipun Talukder - Blogs</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/assets/vendors/themify-icons/css/themify-icons.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+        <nav class="navbar">
+        <div class="nav-container container">
+            <a href="index.html" class="navbar-brand">Sunipun Talukder</a>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="navbar-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="competitive_programming.html">CP</a>
+                <a href="certifications.html">Certifications</a>
+                <a href="blogs.html" class="active">Blogs</a>
+                <a href="assets/resume/Sunipun_Talukder.pdf" target="_blank">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="section-title gradient-text">Latest Blog Posts</h1>
+                </div>
+                <div id="blog-posts" class="blog-grid">
+                    <!-- Blog posts will be loaded here -->
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">&copy; 2025 Sunipun Talukder. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:talukdersunipun@gmail.com">Contact</a>
+                    <a href="assets/resume/Sunipun_Talukder.pdf" target="_blank">Resume</a>
+                    <a href="https://github.com/stsaikat" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-links').classList.toggle('active');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Using RSS2JSON API to convert Medium RSS feed to JSON
+            const mediumUsername = '@talukdersunipun';
+            const rss2jsonApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${mediumUsername}`;
+
+            fetch(rss2jsonApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const blogPosts = data.items.slice(0, 5); // Get latest 5 posts
+                    const blogPostsContainer = document.getElementById('blog-posts');
+                    blogPostsContainer.innerHTML = ''; // Clear loading spinner
+
+                    blogPosts.forEach(post => {
+                        const date = new Date(post.pubDate).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+
+                        const postHtml = `
+                            <article class="blog-card">
+                                <div class="blog-content">
+                                    <h2 class="blog-title">${post.title}</h2>
+                                    <time class="blog-date">${date}</time>
+                                    <p class="blog-excerpt">${post.description.substring(0, 300)}...</p>
+                                    <a href="${post.link}" target="_blank" class="btn btn-primary">Read More <i data-feather="arrow-right"></i></a>
+                                </div>
+                            </article>
+                        `;
+                        blogPostsContainer.innerHTML += postHtml;
+                    });
+                })
+                .catch(error => {
+                    document.getElementById('blog-posts').innerHTML = `
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                Failed to load blog posts. Please try again later.
+                            </div>
+                        </div>
+                    `;
+                    console.error('Error fetching blog posts:', error);
+                });
+        });
+    </script>
+</body>
+</html>
