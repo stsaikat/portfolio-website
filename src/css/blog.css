@@ -43,8 +43,24 @@
 .blog-excerpt {
     color: #666;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     font-size: 0.95rem;
+}
+
+.blog-actions {
+    margin-bottom: 0.5rem;
+}
+
+.blog-actions .blog-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.95rem;
+}
+
+.blog-actions .blog-link i {
+    width: 14px;
+    height: 14px;
 }
 
 .loading-spinner {

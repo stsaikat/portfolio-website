@@ -91,13 +91,21 @@
                             day: 'numeric'
                         });
 
+                        // Extract first paragraph by splitting on double newlines or heading markers
+                        const firstParagraph = post.description
+                            .split(/\n\n|\n#|<h[1-6]>|<\/h[1-6]>/)[0]
+                            .trim();
+
                         const postHtml = `
                             <article class="blog-card">
                                 <h2 class="blog-title">
                                     <a href="${post.link}" target="_blank" class="blog-link">${post.title}</a>
                                 </h2>
                                 <time class="blog-date">${date}</time>
-                                <p class="blog-excerpt">${post.description.substring(0, 1000)}...</p>
+                                <p class="blog-excerpt">${firstParagraph}</p>
+                                <div class="blog-actions">
+                                    <a href="${post.link}" target="_blank" class="blog-link">Read the full blog on Medium <i data-feather="external-link"></i></a>
+                                </div>
                             </article>
                         `;
                         blogPostsContainer.innerHTML += postHtml;
