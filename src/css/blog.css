@@ -13,53 +13,37 @@
 }
 
 .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .blog-card {
-    background: white;
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    transition: var(--transition);
-    box-shadow: var(--shadow);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eee;
 }
 
-.blog-card:hover {
-    transform: translateY(-5px);
-}
-
-.blog-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.blog-card:last-child {
+    border-bottom: none;
 }
 
 .blog-title {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: var(--text-color);
-    line-height: 1.4;
 }
 
 .blog-date {
     font-size: 0.875rem;
     color: #666;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
     display: block;
 }
 
 .blog-excerpt {
     color: #666;
-    /* margin-bottom: 2rem; */
     line-height: 1.6;
-    flex: 1;
+    margin-bottom: 1rem;
     font-size: 0.95rem;
 }
 
@@ -86,33 +70,37 @@
     }
 }
 
-.blog-card .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
+.blog-link {
+    color: var(--primary-color);
     text-decoration: none;
-    transition: var(--transition);
     font-weight: 500;
+}
+
+.blog-link:hover {
+    text-decoration: underline;
+}
+
+.view-all-blogs {
     text-align: center;
-    font-size: 0.9rem;
-    margin-top: auto;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
 }
 
-.blog-card .btn-primary {
-    margin-top: 1rem;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
+.view-all-blogs .blog-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
 }
 
-.blog-card .btn-primary:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-2px);
+.view-all-blogs .blog-link i {
+    width: 16px;
+    height: 16px;
 }
 
 @media (max-width: 768px) {
     .blog-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+        padding: 0 1rem;
     }
 }

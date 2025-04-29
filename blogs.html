@@ -43,6 +43,9 @@
                         <span class="sr-only">Loading...</span>
                     </div>
                 </div>
+                <div class="view-all-blogs">
+                    <a href="https://medium.com/@talukdersunipun" target="_blank" class="blog-link">View all blogs on Medium <i data-feather="external-link"></i></a>
+                </div>
             </div>
         </section>
     </main>
@@ -90,12 +93,11 @@
 
                         const postHtml = `
                             <article class="blog-card">
-                                <div class="blog-content">
-                                    <h2 class="blog-title">${post.title}</h2>
-                                    <time class="blog-date">${date}</time>
-                                    <p class="blog-excerpt">${post.description.substring(0, 300)}...</p>
-                                    <a href="${post.link}" target="_blank" class="btn btn-primary">Read More <i data-feather="arrow-right"></i></a>
-                                </div>
+                                <h2 class="blog-title">
+                                    <a href="${post.link}" target="_blank" class="blog-link">${post.title}</a>
+                                </h2>
+                                <time class="blog-date">${date}</time>
+                                <p class="blog-excerpt">${post.description.substring(0, 1000)}...</p>
                             </article>
                         `;
                         blogPostsContainer.innerHTML += postHtml;
