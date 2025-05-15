@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="src/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/assets/vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="src/css/about.css">
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
@@ -38,7 +39,7 @@
                     <div class="profile-container">
                         <img src="assets/imgs/profile-real.jpeg" alt="Sunipun Talukder" class="profile-image">
                     </div>
-        <div class="profile-info">
+                    <div class="profile-info">
                         <h1>Sunipun Saikat</h1>
                         <p class="lead">AI Engineer & Software Developer</p>
                         <p class="bio">I'm an AI Engineer and software developer, with a strong foundation in mathematics and a passion for solving real-world problems through artificial intelligence. I bring hands-on experience in machine learning, computer vision, and generative AI. Building systems used by millions of users globally.</p>
@@ -47,10 +48,17 @@
                                 <i data-feather="github"></i>
                                 <span>GitHub</span>
                             </a>
-                            <a href="mailto:talukdersunipun@gmail.com">
-                                <i data-feather="mail"></i>
-                                <span>Email</span>
-                            </a>
+                            <div class="email-container">
+                                <div class="email-button">
+                                    <i data-feather="mail"></i>
+                                    <span class="email-text">Email</span>
+                                    <span class="email-address">talukdersunipun@gmail.com</span>
+                                    <button class="copy-button">
+                                        <i data-feather="copy"></i>
+                                    </button>
+                                    <span class="copy-success">Copied!</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -343,7 +351,41 @@
     </footer>
 
     <script>
-        feather.replace();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Feather icons
+            feather.replace();
+
+            // Email button functionality
+            const emailButton = document.querySelector('.email-button');
+            const copyButton = document.querySelector('.copy-button');
+            const copySuccess = document.querySelector('.copy-success');
+
+            emailButton.addEventListener('click', function(e) {
+                if (e.target === copyButton || e.target === copyButton.querySelector('i')) {
+                    return; // Don't toggle if clicking the copy button
+                }
+                e.preventDefault();
+                this.classList.toggle('expanded');
+            });
+
+            copyButton.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent the email button click event
+                const email = 'talukdersunipun@gmail.com';
+                navigator.clipboard.writeText(email).then(() => {
+                    copySuccess.classList.add('show');
+                    setTimeout(() => {
+                        copySuccess.classList.remove('show');
+                    }, 2000);
+                });
+            });
+
+            // Close email expanded when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!emailButton.contains(e.target)) {
+                    emailButton.classList.remove('expanded');
+                }
+            });
+        });
         
         document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
             this.classList.toggle('active');
