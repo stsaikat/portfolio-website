@@ -296,9 +296,10 @@ img {
 }
 
 .section-title {
+    text-align: center;
     font-size: 2rem;
     color: var(--text-color);
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .section-description {
@@ -1004,8 +1005,13 @@ img {
 /* CP Profile Cards */
 .cp-hero {
     padding-top: 120px;
+    padding-bottom: 2rem;
     text-align: center;
     background-color: var(--background-color);
+}
+
+.cp-profiles {
+    padding-top: 0rem;
 }
 
 .cp-card {
