@@ -94,6 +94,8 @@
                         // Extract first paragraph by splitting on double newlines or heading markers
                         const firstParagraph = post.description
                             .split(/\n\n|\n#|<h[1-6]>|<\/h[1-6]>/)[0]
+                            .replace(/<img[^>]*>/g, "")        // remove HTML <img> tags
+                            .replace(/!\[.*?\]\(.*?\)/g, "")   // remove Markdown image syntax
                             .trim();
 
                         const postHtml = `
