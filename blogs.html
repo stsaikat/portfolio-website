@@ -80,7 +80,8 @@
             fetch(rss2jsonApiUrl)
                 .then(response => response.json())
                 .then(data => {
-                    const blogPosts = data.items.slice(0, 5); // Get latest 5 posts
+                    // const blogPosts = data.items.slice(0, 5); // Get latest 5 posts
+                    const blogPosts = data.items.slice(0, 5);
                     const blogPostsContainer = document.getElementById('blog-posts');
                     blogPostsContainer.innerHTML = ''; // Clear loading spinner
 
@@ -92,11 +93,11 @@
                         });
 
                         // Extract first paragraph by splitting on double newlines or heading markers
-                        const firstParagraph = post.description
-                            .split(/\n\n|\n#|<h[1-6]>|<\/h[1-6]>/)[0]
-                            .replace(/<img[^>]*>/g, "")        // remove HTML <img> tags
-                            .replace(/!\[.*?\]\(.*?\)/g, "")   // remove Markdown image syntax
-                            .trim();
+                        // const firstParagraph = post.description
+                        //     .split(/\n\n|\n#|<h[1-6]>|<\/h[1-6]>/)[0]
+                        //     .replace(/<img[^>]*>/g, "")        // remove HTML <img> tags
+                        //     .replace(/!\[.*?\]\(.*?\)/g, "")   // remove Markdown image syntax
+                        //     .trim();
 
                         const postHtml = `
                             <article class="blog-card">
@@ -104,10 +105,10 @@
                                     <a href="${post.link}" target="_blank" class="blog-link">${post.title}</a>
                                 </h2>
                                 <time class="blog-date">${date}</time>
-                                <p class="blog-excerpt">${firstParagraph}</p>
-                                <div class="blog-actions">
-                                    <a href="${post.link}" target="_blank" class="blog-link">Read the full blog on Medium <i data-feather="external-link"></i></a>
-                                </div>
+                                // <p class="blog-excerpt">${firstParagraph}</p>
+                                // <div class="blog-actions">
+                                //     <a href="${post.link}" target="_blank" class="blog-link">Read the full blog on Medium <i data-feather="external-link"></i></a>
+                                // </div>
                             </article>
                         `;
                         blogPostsContainer.innerHTML += postHtml;
