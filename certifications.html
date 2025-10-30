@@ -4,10 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certifications - Sunipun Talukder</title>
-    <link rel="stylesheet" href="src/css/certifications.css">
+    <link rel="stylesheet" href="src/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/assets/vendors/themify-icons/css/themify-icons.css">
     <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f9fafb;
+            --border: #e5e7eb;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .certifications-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        
+        .certifications-header {
+            grid-column: 1 / -1;
+            margin-bottom: 1rem;
+        }
+        
+        .certification {
+            background: white;
+            border-radius: 10px;
+            padding: 1.25rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: stretch;
+            min-height: 180px;
+            overflow: hidden;
+        }
+        
+        .certification-thumbnail {
+            width: 180px;
+            min-height: 100%;
+            background-color: #f8f9fa;
+            margin: -1.25rem 1.5rem -1.25rem -1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 10px;
+        }
+        
+        .certification-thumbnail img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .certification-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .certification:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+        
+        .certification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            padding: 0;
+        }
+        
+        .certification h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        
+        .certification-meta {
+            display: flex;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .certification-issuer {
+            font-weight: 500;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .certification-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .certification-date::before {
+            content: '•';
+            margin-right: 0.5rem;
+            color: var(--text-light);
+        }
+        
+        .certification-description {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .certification-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .certification-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+        
+        .certification-link i {
+            margin-left: 0.4rem;
+            width: 1em;
+            height: 1em;
+            transition: transform 0.2s;
+        }
+        
+        .certification-link:hover i {
+            transform: translateX(3px);
+        }
+        
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            margin: 0 0 2rem 0;
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
+        
+        @media (max-width: 768px) {
+            .certification {
+                flex-direction: column;
+                min-height: auto;
+            }
+            
+            .certification-thumbnail {
+                width: 100%;
+                height: 180px;
+                margin: -1.25rem -1.25rem 1rem -1.25rem;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .certifications-container {
+                padding: 1rem 0.75rem;
+                gap: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .certification {
+                padding: 1.25rem 1rem;
+            }
+            
+            .certification-meta {
+                gap: 0.4rem;
+            }
+            
+            .certification-issuer,
+            .certification-date {
+                font-size: 0.8rem;
+                padding: 0.2rem 0.4rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -30,187 +238,238 @@
         </div>
     </nav>
 
-    <main>
-        <section class="section certifications-hero">
-            <div class="container">
-                <h1>Certifications</h1>
-                <p class="lead">Professional certifications and achievements</p>
-            </div>
-        </section>
-
-        <section class="section certifications-section">
-            <div class="container">
-                <div class="certification-category">
-                    <h2>AI & Machine Learning</h2>
-                    <div class="certification-grid">
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Machine Learning in Production</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">DeepLearning.AI (Coursera)</p>
-                                <p class="date">July 2024</p>
-                                <p class="duration">Duration: 11 hours</p>
-                                <p class="description">Learned ML project lifecycle, deployment patterns, model optimization, and production challenges for structured and unstructured data.</p>
-                                <a href="https://coursera.org/share/95744f2bca2e6e61066704051528528e" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Introduction to Generative AI</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">Google Cloud (Coursera)</p>
-                                <p class="date">January 2024</p>
-                                <p class="duration">Duration: 1 hour</p>
-                                <p class="description">Gained foundational knowledge of generative AI, its working principles, model types, and real-world applications.</p>
-                                <a href="https://coursera.org/share/492b01b0223561b7565ca9d7b747a42e" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Machine Learning</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">Stanford University (Coursera)</p>
-                                <p class="date">December 2020</p>
-                                <p class="duration">Duration: 60 hours</p>
-                                <p class="description">Comprehensive course covering machine learning fundamentals, supervised and unsupervised learning, and practical applications.</p>
-                                <a href="https://coursera.org/share/fbf70571d98c801b77b626ec6e91c887" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Introduction to On-Device AI</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">DeepLearning.AI & Qualcomm</p>
-                                <p class="date">2024</p>
-                                <p class="achievement">Achievement: 100% Completed</p>
-                                <p class="description">Learned model conversion, quantization, and deployment techniques for edge devices and smartphones, focusing on segmentation models and device integration.</p>
-                                <a href="https://learn.deeplearning.ai/accomplishments/3df34691-60f8-434f-b017-5e4074083316?usp=sharing" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>How Diffusion Models Work</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">DeepLearning.AI</p>
-                                <p class="date">2024</p>
-                                <p class="achievement">Achievement: 100% Completed</p>
-                                <p class="description">Built diffusion models from the ground up, understanding sampling, neural networks, training, and techniques for controlling and speeding up the generation process.</p>
-                                <a href="https://learn.deeplearning.ai/accomplishments/e1b922d9-f128-4138-87ea-025b6e60abf6?usp=sharing" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Evaluating and Debugging Generative AI</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">DeepLearning.AI & Weights & Biases</p>
-                                <p class="date">2024</p>
-                                <p class="achievement">Achievement: 100% Completed</p>
-                                <p class="description">Mastered MLOps tools for managing, versioning, debugging, and experimenting in ML workflows, including diffusion model evaluation and LLM tracing.</p>
-                                <a href="https://learn.deeplearning.ai/accomplishments/fe85c533-7860-44bf-8ac1-a877aaf0bca1?usp=sharing" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>LangChain for LLM Application Development</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">DeepLearning.AI & LangChain</p>
-                                <p class="date">2024</p>
-                                <p class="achievement">Achievement: 100% Completed</p>
-                                <p class="description">Learned to build LLM applications using LangChain framework, including prompts, memory, chains, question answering, and agent development.</p>
-                                <a href="https://learn.deeplearning.ai/accomplishments/7a9c941b-7b68-4be9-a5b9-54b0812243ab?usp=sharing" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certification-category">
-                    <h2>Development & DevOps</h2>
-                    <div class="certification-grid">
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Getting Started with Docker</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">Simplilearn</p>
-                                <p class="date">2024</p>
-                                <p class="duration">Duration: 2 hours</p>
-                                <p class="description">Mastered Docker fundamentals, containerization, and deployment practices for modern application development and deployment.</p>
-                                <a href="https://simpli-web.app.link/e/pH29s9CVNSb" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Introduction to PyTorch</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">Simplilearn</p>
-                                <p class="date">2024</p>
-                                <p class="duration">Duration: 2 hours</p>
-                                <p class="description">Learned PyTorch fundamentals for deep learning, including tensor operations, neural networks, and model training.</p>
-                                <a href="https://simpli-web.app.link/e/amkzypEVNSb" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="certification-category">
-                    <h2>Other Courses</h2>
-                    <div class="certification-grid">
-                        <div class="certification-card">
-                            <div class="certification-header">
-                                <i data-feather="award"></i>
-                                <h3>Introduction to Psychology</h3>
-                            </div>
-                            <div class="certification-body">
-                                <p class="issuer">Yale University (Coursera)</p>
-                                <p class="date">July 2020</p>
-                                <p class="duration">Duration: 14 hours</p>
-                                <p class="description">Developed analytical thinking, critical reasoning, and problem-solving skills through comprehensive study of psychological principles.</p>
-                                <a href="https://coursera.org/share/1b60dce5157977233ff118dc93dab58a" target="_blank" class="btn btn-outline">View Certificate</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Sunipun Talukder. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        feather.replace();
+    <main class="certifications-container">
+        <h1 class="section-title">Certifications</h1>
+        <p class="section-subtitle">A collection of my professional certifications and completed courses</p>
         
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.navbar-links').classList.toggle('active');
-        });
-    </script>
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~DCCKG2MLLQ98/CERTIFICATE_LANDING_PAGE~DCCKG2MLLQ98.jpeg" alt="Machine Learning in Production">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Machine Learning in Production</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">DeepLearning.AI (Coursera)</span>
+                    <span class="certification-date">July 2024</span>
+                </div>
+                <p class="certification-description">ML project lifecycle, deployment patterns, and production challenges for structured and unstructured data.</p>
+                <div class="mt-auto">
+                    <a href="https://coursera.org/share/95744f2bca2e6e61066704051528528e" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://s3.amazonaws.com/coursera_assets/meta_share/opengraph-share.png" alt="Introduction to Generative AI">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Introduction to Generative AI</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">Google Cloud (Coursera)</span>
+                    <span class="certification-date">January 2024</span>
+                </div>
+                <p class="certification-description">Foundational knowledge of generative AI, its working principles, model types, and real-world applications.</p>
+                <div class="mt-auto">
+                    <a href="https://coursera.org/share/492b01b0223561b7565ca9d7b747a42e" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://s3.amazonaws.com/coursera_assets/meta_share/opengraph-share.png" alt="Machine Learning">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Machine Learning</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">Stanford University (Coursera)</span>
+                    <span class="certification-date">December 2020</span>
+                </div>
+                <p class="certification-description">Comprehensive course covering machine learning fundamentals, supervised and unsupervised learning.</p>
+                <div class="mt-auto">
+                    <a href="https://coursera.org/share/fbf70571d98c801b77b626ec6e91c887" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://learn.deeplearning.ai/assets/logo-44c547691b1593490ebfebd34253c843e3664e0d156cdb3f9c1a8c3fdb5a5f12.png" alt="On-Device AI">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>On-Device AI</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">DeepLearning.AI & Qualcomm</span>
+                    <span class="certification-date">2024</span>
+                </div>
+                <p class="certification-description">Model conversion, quantization, and deployment techniques for edge devices and smartphones.</p>
+                <div class="mt-auto">
+                    <a href="https://learn.deeplearning.ai/accomplishments/3df34691-60f8-434f-b017-5e4074083316" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://learn.deeplearning.ai/assets/logo-44c547691b1593490ebfebd34253c843e3664e0d156cdb3f9c1a8c3fdb5a5f12.png" alt="Diffusion Models">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Diffusion Models</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">DeepLearning.AI</span>
+                    <span class="certification-date">2024</span>
+                </div>
+                <p class="certification-description">Built diffusion models from the ground up, understanding sampling and training techniques.</p>
+                <div class="mt-auto">
+                    <a href="https://learn.deeplearning.ai/accomplishments/e1b922d9-f128-4138-87ea-025b6e60abf6" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://learn.deeplearning.ai/assets/logo-44c547691b1593490ebfebd34253c843e3664e0d156cdb3f9c1a8c3fdb5a5f12.png" alt="Debugging Generative AI">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Debugging Generative AI</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">DeepLearning.AI & Weights & Biases</span>
+                    <span class="certification-date">2024</span>
+                </div>
+                <p class="certification-description">MLOps tools for managing, versioning, and debugging ML workflows and LLM tracing.</p>
+                <div class="mt-auto">
+                    <a href="https://learn.deeplearning.ai/accomplishments/fe85c533-7860-44bf-8ac1-a877aaf0bca1" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://learn.deeplearning.ai/assets/logo-44c547691b1593490ebfebd34253c843e3664e0d156cdb3f9c1a8c3fdb5a5f12.png" alt="LangChain for LLM Apps">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>LangChain for LLM Apps</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">DeepLearning.AI & LangChain</span>
+                    <span class="certification-date">2024</span>
+                </div>
+                <p class="certification-description">Building LLM applications using LangChain framework, including prompts and agent development.</p>
+                <div class="mt-auto">
+                    <a href="https://learn.deeplearning.ai/accomplishments/7a9c941b-7b68-4be9-a5b9-54b0812243ab" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://simpli-web.app/static/images/simpli-logo.png" alt="Docker Fundamentals">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Docker Fundamentals</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">Simplilearn</span>
+                    <span class="certification-date">2024</span>
+                </div>
+                <p class="certification-description">Docker fundamentals, containerization, and deployment practices for modern applications.</p>
+                <div class="mt-auto">
+                    <a href="https://simpli-web.app.link/e/pH29s9CVNSb" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://simpli-web.app/static/images/simpli-logo.png" alt="Introduction to PyTorch">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Introduction to PyTorch</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">Simplilearn</span>
+                    <span class="certification-date">2024</span>
+                </div>
+                <p class="certification-description">PyTorch fundamentals for deep learning, including tensor operations and neural networks.</p>
+                <div class="mt-auto">
+                    <a href="https://simpli-web.app.link/e/amkzypEVNSb" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="certification">
+            <div class="certification-thumbnail">
+                <img src="https://s3.amazonaws.com/coursera_assets/meta_share/opengraph-share.png" alt="Introduction to Psychology">
+            </div>
+            <div class="certification-content">
+                <div class="certification-header">
+                    <h3>Introduction to Psychology</h3>
+                </div>
+                <div class="certification-meta">
+                    <span class="certification-issuer">Yale University (Coursera)</span>
+                    <span class="certification-date">July 2020</span>
+                </div>
+                <p class="certification-description">Analytical thinking, critical reasoning, and problem-solving through psychological principles.</p>
+                <div class="mt-auto">
+                    <a href="https://coursera.org/share/1b60dce5157977233ff118dc93dab58a" target="_blank" class="certification-link">
+                        View Certificate <i data-feather="external-link"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p class="copyright">&copy; 2025 Sunipun Talukder. All rights reserved.</p>
+                    <div class="footer-links">
+                        <a href="https://github.com/stsaikat" target="_blank">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            feather.replace();
+            
+            document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.querySelector('.navbar-links').classList.toggle('active');
+            });
+        </script>
 </body>
 </html> 
