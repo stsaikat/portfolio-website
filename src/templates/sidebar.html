@@ -1,0 +1,185 @@
+<!-- Sidebar Container -->
+<div id="sidebar-root"></div>
+
+<!-- Mobile Menu Toggle -->
+<button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+  <i data-feather="menu"></i>
+</button>
+
+<!-- Overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- Sidebar HTML Template -->
+<template id="sidebar-template">
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar__header">
+            <a href="/" class="sidebar__brand">ST</a>
+            <button class="sidebar__toggle" id="sidebarToggle" aria-label="Toggle navigation">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+        
+        <div class="sidebar__content">
+            <ul class="sidebar__nav">
+                <li class="sidebar__item">
+                    <a href="index.html" class="sidebar__link" data-page="home">
+                        <i data-feather="home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="about.html" class="sidebar__link" data-page="about">
+                        <i data-feather="user"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="certifications.html" class="sidebar__link" data-page="certifications">
+                        <i data-feather="award"></i>
+                        <span>Certifications</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="projects.html" class="sidebar__link" data-page="projects">
+                        <i data-feather="briefcase"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="blogs.html" class="sidebar__link" data-page="blog">
+                        <i data-feather="edit"></i>
+                        <span>Blog</span>
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="competitive_programming.html" class="sidebar__link" data-page="cp">
+                        <i data-feather="code"></i>
+                        <span>Competitive Programming</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="sidebar__footer">
+            <div class="sidebar__social">
+                <a href="https://github.com/stsaikat" class="sidebar__social-link" target="_blank" aria-label="GitHub">
+                    <i data-feather="github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sunipun/" class="sidebar__social-link" target="_blank" aria-label="LinkedIn">
+                    <i data-feather="linkedin"></i>
+                </a>
+                <a href="https://x.com/sunipun_saikat" class="sidebar__social-link" target="_blank" aria-label="Twitter">
+                    <i data-feather="twitter"></i>
+                </a>
+            </div>
+            <p class="sidebar__copyright">&copy; <span id="current-year">2024</span> Sunipun Talukder</p>
+        </div>
+    </nav>
+</template>
+
+<script>
+// Initialize sidebar when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize sidebar
+    const sidebarRoot = document.getElementById('sidebar-root');
+    const template = document.getElementById('sidebar-template');
+    if (sidebarRoot && template) {
+        // Clear any existing content
+        while (sidebarRoot.firstChild) {
+            sidebarRoot.removeChild(sidebarRoot.firstChild);
+        }
+        
+        // Clone the template content and append it to the sidebar root
+        const templateContent = template.content.cloneNode(true);
+        sidebarRoot.appendChild(templateContent);
+        
+        // Initialize the sidebar functionality
+        initializeSidebar();
+    }
+    
+    // Initialize Feather Icons
+    if (typeof feather !== 'undefined') {
+        feather.replace();
+    }
+});
+
+// Sidebar functionality
+function initializeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    // Check if sidebar should be collapsed from localStorage
+    const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+    
+    // Set initial state
+    if (isCollapsed) {
+        document.body.classList.add('sidebar-collapsed');
+    }
+    
+    // Toggle sidebar on desktop
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function() {
+            document.body.classList.toggle('sidebar-collapsed');
+            // Save state to localStorage
+            localStorage.setItem('sidebarCollapsed', document.body.classList.contains('sidebar-collapsed'));
+        });
+    }
+    
+    // Toggle sidebar on mobile
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+            document.body.classList.add('sidebar-visible');
+            sidebarOverlay.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // Close sidebar when clicking overlay
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', function() {
+            document.body.classList.remove('sidebar-visible');
+            this.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+        const isClickInsideSidebar = sidebar.contains(event.target);
+        const isClickOnToggle = mobileMenuToggle.contains(event.target);
+        
+        if (!isClickInsideSidebar && !isClickOnToggle && window.innerWidth < 1024) {
+            document.body.classList.remove('sidebar-visible');
+            if (sidebarOverlay) {
+                sidebarOverlay.style.display = 'none';
+            }
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Update active link based on current page
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const links = document.querySelectorAll('.sidebar__link');
+    
+    links.forEach(link => {
+        // Remove active class from all links
+        link.classList.remove('active');
+        
+        // Add active class to current page link
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage || 
+            (currentPage === '' && linkHref === 'index.html') ||
+            (currentPage === '/' && linkHref === 'index.html')) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Update copyright year
+    const yearElement = document.getElementById('current-year');
+    if (yearElement) {
+        yearElement.textContent = new Date().getFullYear();
+    }
+}
+</script>

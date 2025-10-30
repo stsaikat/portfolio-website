@@ -1,0 +1,116 @@
+/* Card Component */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card__content {
+  padding: var(--spacing-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__header {
+  margin-bottom: var(--spacing-md);
+}
+
+.card__title {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+}
+
+.card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card__meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.card__meta-item svg {
+  width: 1em;
+  height: 1em;
+}
+
+.card__footer {
+  margin-top: auto;
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Certification Card Variant */
+.card--certification {
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0;
+}
+
+.card--certification .card__image-container {
+  width: 200px;
+  min-height: 100%;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.card--certification .card__image {
+  height: auto;
+  max-height: 100%;
+  border-bottom: none;
+  border-right: 1px solid var(--color-border);
+}
+
+.card--certification .card__content {
+  flex: 1;
+  padding: var(--spacing-lg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card--certification {
+    flex-direction: column;
+  }
+  
+  .card--certification .card__image-container {
+    width: 100%;
+    height: 180px;
+    padding: var(--spacing-md);
+  }
+  
+  .card--certification .card__image {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+}

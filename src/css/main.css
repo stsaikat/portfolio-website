@@ -1,0 +1,40 @@
+/* Main CSS File - Imports all components */
+
+/* Base Styles */
+@import 'base.css';
+
+/* Components */
+@import 'components/buttons.css';
+@import 'components/navbar.css';
+@import 'components/card.css';
+
+/* Layouts */
+@import 'layouts/header.css';
+@import 'layouts/footer.css';
+
+/* Pages */
+@import 'pages/home.css';
+@import 'pages/certifications.css';
+
+/* Utilities */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Page Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}

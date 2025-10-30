@@ -1,0 +1,93 @@
+/* Certifications Page */
+.certifications {
+  padding: 7rem 0 4rem;
+  min-height: 100vh;
+}
+
+.certifications__header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.certifications__title {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+}
+
+.certifications__subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.certifications__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+}
+
+.certification-card {
+  height: 100%;
+}
+
+.certification-card__title {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+}
+
+.certification-card__issuer {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.certification-card__date {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-bottom: var(--spacing-md);
+}
+
+.certification-card__date svg {
+  width: 1em;
+  height: 1em;
+}
+
+.certification-card__skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.skill-tag {
+  display: inline-block;
+  background-color: rgba(59, 130, 246, 0.1);
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .certifications {
+    padding: 6rem 0 3rem;
+  }
+  
+  .certifications__title {
+    font-size: 2rem;
+  }
+  
+  .certifications__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
