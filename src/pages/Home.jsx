@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Copy, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import '../styles/about.css';
 
 const Home = () => {
     const [emailExpanded, setEmailExpanded] = useState(false);

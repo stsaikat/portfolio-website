@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Github, Mail, Copy, Cpu, Eye, Smartphone, Activity, Book, Code, BarChart2, Grid } from 'lucide-react';
+import '../styles/about.css';
 
 const About = () => {
     const [copySuccess, setCopySuccess] = useState(false);

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import '../styles/blog.css';
 
 const Blogs = () => {
     const [posts, setPosts] = useState([]);

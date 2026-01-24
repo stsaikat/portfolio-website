@@ -1,5 +1,6 @@
 import React from 'react';
 import { Code, Award, CheckCircle } from 'lucide-react';
+import '../styles/competitive_programming.css';
 
 const CompetitiveProgramming = () => {
     return (

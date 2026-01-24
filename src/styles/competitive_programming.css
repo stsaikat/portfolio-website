@@ -1,0 +1,123 @@
+/* CP Profile Cards */
+.cp-hero {
+    padding-top: 120px;
+    padding-bottom: 2rem;
+    text-align: center;
+    background-color: var(--background-color);
+}
+
+.cp-profiles {
+    padding-top: 0rem;
+}
+
+.cp-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.cp-card-header {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.cp-card-header h2 {
+    margin-bottom: 0.5rem;
+}
+
+.handle {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.cp-card-body {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cp-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+    flex: 1;
+}
+
+.cp-stats li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.cp-stats li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.stat-label {
+    color: #666;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.cp-card-body .btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Achievement Cards in CP */
+.achievement-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.achievement-card-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+.achievement-card-body h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.achievement-card-body p {
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .cp-hero {
+        padding-top: 100px;
+    }
+
+    .cp-card {
+        margin-bottom: 2rem;
+    }
+
+    .cp-card:last-child {
+        margin-bottom: 0;
+    }
+}
