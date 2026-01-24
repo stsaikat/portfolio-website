@@ -1,144 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sunipun Talukder - Portfolio</title>
-    <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="stylesheet" href="src/css/about.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/assets/vendors/themify-icons/css/themify-icons.css">
-    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-container container">
-            <a href="index.html" class="navbar-brand">Sunipun Talukder</a>
-            <button class="mobile-menu-btn">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-            <div class="navbar-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="about.html">About</a>
-                <a href="projects.html">Projects</a>
-                <a href="competitive_programming.html">CP</a>
-                <a href="certifications.html">Certifications</a>
-                <a href="blogs.html">Blogs</a>
-            </div>
-        </div>
-    </nav>
-
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <div class="hero-text">
-                            <h1 class="gradient-text">Hi, I'm Sunipun</h1>
-                            <h2 class="hero-subtitle">Software Engineer - AI & ML</h2>
-                            <p class="hero-description mb-4">
-                                Specializing in Generative AI, Deep Learning & Computer Vision<br>Mathematics Background | Competitive programmer
-                            </p>
-                        </div>
-                        <div class="action-buttons">
-                            <div class="contact-actions">
-                                <div class="email-container">
-                                    <div class="email-button">
-                                        <i data-feather="mail"></i>
-                                        <span class="email-text">Email</span>
-                                        <span class="email-address">talukdersunipun@gmail.com</span>
-                                        <button class="copy-button">
-                                            <i data-feather="copy"></i>
-                                        </button>
-                                        <span class="copy-success">Copied!</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="contact-actions">
-                                <a href="https://github.com/stsaikat" target="_blank" class="contact-btn">
-                                    <i data-feather="github"></i>
-                                    <span>GitHub</span>
-                                </a>
-                                <a href="https://www.linkedin.com/in/sunipuntalukder/" target="_blank" class="contact-btn">
-                                    <i data-feather="linkedin"></i>
-                                    <span>LinkedIn</span>
-                                </a>
-                            </div>
-                            <div class="primary-actions">
-                                <a href="projects.html" class="btn btn-primary">View My Work</a>
-                                <a href="about.html" class="btn btn-outline">About Me</a>
-                                <a href="blogs.html" class="btn btn-outline">Blogs</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <div class="profile-container">
-                            <img src="assets/imgs/profile.jpg" alt="Sunipun Talukder" class="profile-image">
-                            <div class="hero-background"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p class="copyright">&copy; 2025 Sunipun Talukder. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="https://github.com/stsaikat" target="_blank">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        feather.replace();
-        
-        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.navbar-links').classList.toggle('active');
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Feather icons
-            feather.replace();
-
-            // Email button functionality
-            const emailButton = document.querySelector('.email-button');
-            const copyButton = document.querySelector('.copy-button');
-            const copySuccess = document.querySelector('.copy-success');
-
-            emailButton.addEventListener('click', function(e) {
-                if (e.target === copyButton || e.target === copyButton.querySelector('i')) {
-                    return; // Don't toggle if clicking the copy button
-                }
-                e.preventDefault();
-                this.classList.toggle('expanded');
-            });
-
-            copyButton.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent the email button click event
-                const email = 'talukdersunipun@gmail.com';
-                navigator.clipboard.writeText(email).then(() => {
-                    copySuccess.classList.add('show');
-                    setTimeout(() => {
-                        copySuccess.classList.remove('show');
-                    }, 2000);
-                });
-            });
-
-            // Close email expanded when clicking outside
-            document.addEventListener('click', function(e) {
-                if (!emailButton.contains(e.target)) {
-                    emailButton.classList.remove('expanded');
-                }
-            });
-        });
-    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>

@@ -1,0 +1,139 @@
+/* Projects Page Styles */
+.projects-hero {
+    padding-top: 50px;
+    /* Adjusted for Layout */
+    text-align: center;
+    background-color: var(--background-color);
+    padding-bottom: 2rem;
+}
+
+.projects-hero .section-title {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.professional-projects,
+.personal-projects {
+    padding: 3rem 0;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-body .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    width: 100%;
+    background: transparent;
+    /* Override global .card-header if any */
+}
+
+.card-header h4 {
+    margin: 0;
+    color: var(--text-color);
+    flex: 1;
+    font-size: 1.25rem;
+}
+
+.card-header .project-links {
+    margin-top: 0;
+    margin-left: auto;
+}
+
+.project-bullets {
+    padding-left: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.project-bullets li {
+    margin-bottom: 0.5rem;
+    color: #666;
+    position: relative;
+    list-style-type: disc;
+}
+
+.project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border-radius: 30px;
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    justify-content: center;
+}
+
+.project-links a i {
+    color: black;
+    font-size: 1.5rem;
+}
+
+.project-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.project-links a i:hover {
+    color: var(--primary-color);
+}
+
+.section-title-hero {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+.section-title {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    color: var(--text-color);
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+
+    .grid-2,
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+}

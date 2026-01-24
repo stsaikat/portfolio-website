@@ -1,0 +1,84 @@
+/* About Page / Email Button Specifics */
+.email-container {
+    position: relative;
+    display: inline-block;
+}
+
+.email-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.email-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.email-button.expanded {
+    background-color: var(--primary-color);
+    color: white;
+    min-width: 320px;
+    justify-content: flex-start;
+}
+
+.email-button .email-text {
+    transition: all 0.3s ease;
+}
+
+.email-button.expanded .email-text {
+    display: none;
+}
+
+.email-address {
+    display: none;
+    margin-left: 0.5rem;
+}
+
+.email-button.expanded .email-address {
+    display: inline;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    margin-left: auto;
+    display: none;
+}
+
+.email-button.expanded .copy-button {
+    display: inline-flex;
+}
+
+.copy-success {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    display: none;
+    color: white;
+}
+
+.copy-success.show {
+    display: inline;
+}
+
+@media (max-width: 768px) {
+    .email-button.expanded {
+        min-width: 100%;
+    }
+}

@@ -1,0 +1,130 @@
+.certifications-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.certification {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    align-items: stretch;
+    min-height: 180px;
+    overflow: hidden;
+}
+
+.certification-thumbnail {
+    width: 180px;
+    min-height: 100%;
+    background-color: #f8f9fa;
+    margin: -1.25rem 1.5rem -1.25rem -1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.certification-thumbnail img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.certification-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.certification:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+}
+
+.certification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+    padding: 0;
+}
+
+.certification h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.certification-meta {
+    display: flex;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.certification-issuer {
+    font-weight: 500;
+}
+
+.certification-date {
+    position: relative;
+    padding-left: 1rem;
+}
+
+.certification-date::before {
+    content: '•';
+    margin-right: 0.5rem;
+    position: absolute;
+    left: 0;
+}
+
+.certification-description {
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.certification-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    gap: 0.4rem;
+}
+
+.certification-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .certification {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .certification-thumbnail {
+        width: 100%;
+        height: 180px;
+        margin: -1.25rem -1.25rem 1rem -1.25rem;
+        border-radius: 10px 10px 0 0;
+    }
+}
