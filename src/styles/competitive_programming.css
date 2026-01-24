@@ -1,123 +1,208 @@
-/* CP Profile Cards */
-.cp-hero {
+/* Shared Dark Theme Styles for CP, Blogs, Certs */
+
+/* Heroes */
+.cp-hero,
+.certifications-hero {
     padding-top: 120px;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     text-align: center;
-    background-color: var(--background-color);
+    background: radial-gradient(circle at top, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
 }
 
-.cp-profiles {
-    padding-top: 0rem;
+/* Responsive Grids */
+.grid {
+    display: grid;
+    gap: 2rem;
 }
 
-.cp-card {
-    background: white;
+.grid-3 {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+/* Cards (CP, Cert, Blog - unifying style) */
+.cp-card,
+.certification,
+.blog-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
     transition: var(--transition);
     overflow: hidden;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
 }
 
-.cp-card:hover {
-    transform: translateY(-5px);
+.cp-card:hover,
+.certification:hover,
+.blog-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-hover);
 }
 
+/* CP Specifics */
 .cp-card-header {
-    background: var(--primary-color);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.03);
     padding: 2rem;
     text-align: center;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .cp-card-header h2 {
-    margin-bottom: 0.5rem;
+    font-family: var(--font-mono);
+    margin: 0.5rem 0;
 }
 
 .handle {
-    opacity: 0.9;
+    color: var(--primary-color);
+    font-family: var(--font-mono);
     font-size: 0.9rem;
 }
 
 .cp-card-body {
     padding: 2rem;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+}
+
+.stat-value {
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+}
+
+.cp-stats li {
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Certifications Specifics */
+.certification {
+    display: flex;
+    flex-direction: column;
+    /* Force vertical for cleaner mobile-first look */
+    height: 100%;
+}
+
+.certification-thumbnail {
+    /* Making thumbnail simpler for dark mode */
+    width: 100%;
+    height: 180px;
+    background-color: #000;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    margin: 0;
+}
+
+.certification-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.certification-content {
+    padding: 1.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.cp-stats {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2rem;
-    flex: 1;
+.certification h3 {
+    color: var(--text-primary);
 }
 
-.cp-stats li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.cp-stats li:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.stat-label {
-    color: #666;
-}
-
-.stat-value {
-    font-weight: 600;
+.certification-issuer {
     color: var(--primary-color);
+    font-family: var(--font-mono);
 }
 
-.cp-card-body .btn {
-    width: 100%;
+.certification-date {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
+
+.certification-link {
+    color: var(--secondary-color);
+    font-family: var(--font-mono);
     margin-top: auto;
 }
 
-/* Achievement Cards in CP */
-.achievement-card {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    height: 100%;
+/* Blog Specifics */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
 }
 
-.achievement-card-body {
+.blog-card {
+    padding: 0;
+    /* Remove default padding as flexible layout is used inside */
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-title {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.blog-title a {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.blog-title a:hover {
+    color: var(--primary-color);
+}
+
+.blog-date {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: auto;
+}
+
+/* Shared Achievement Cards */
+.achievement-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
     padding: 2rem;
     text-align: center;
 }
 
-.achievement-card-body h3 {
-    margin-bottom: 1rem;
+.achievement-card h3 {
     color: var(--primary-color);
+    margin-top: 1rem;
 }
 
-.achievement-card-body p {
-    color: #666;
-}
-
-@media (max-width: 768px) {
-    .cp-hero {
-        padding-top: 100px;
+@media (min-width: 768px) {
+    .certification {
+        flex-direction: row;
     }
 
-    .cp-card {
-        margin-bottom: 2rem;
-    }
-
-    .cp-card:last-child {
-        margin-bottom: 0;
+    .certification-thumbnail {
+        width: 200px;
+        height: auto;
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
     }
 }

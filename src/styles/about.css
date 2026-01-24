@@ -1,4 +1,74 @@
-/* About Page / Email Button Specifics */
+/* About Page styles with Dev Theme */
+
+/* Profile Header */
+.about-hero {
+    padding: 120px 0 3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.profile-header {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 3rem;
+    transition: all 0.3s ease;
+}
+
+.profile-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--glow);
+    position: relative;
+    z-index: 2;
+}
+
+.profile-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+}
+
+.profile-info .lead {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    font-family: var(--font-mono);
+    margin-bottom: 1.5rem;
+}
+
+.profile-info .bio {
+    max-width: 700px;
+    line-height: 1.8;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    align-items: center;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Email Button override for Dark Mode */
 .email-container {
     position: relative;
     display: inline-block;
@@ -7,32 +77,31 @@
 .email-button {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 0.75rem;
-    padding: 0.75rem 1.5rem;
-    background-color: white;
-    border: 2px solid var(--primary-color);
-    border-radius: 30px;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: var(--transition);
+    padding: 0.6rem 1.2rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
     cursor: pointer;
     overflow: hidden;
+    transition: var(--transition);
 }
 
 .email-button:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-3px);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--glow);
 }
 
 .email-button.expanded {
-    background-color: var(--primary-color);
-    color: white;
-    min-width: 320px;
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: var(--primary-color);
     justify-content: flex-start;
+    width: auto;
+    min-width: 300px;
 }
 
 .email-button .email-text {
@@ -45,6 +114,7 @@
 
 .email-address {
     display: none;
+    color: var(--primary-color);
     margin-left: 0.5rem;
 }
 
@@ -53,32 +123,228 @@
 }
 
 .copy-button {
+    display: none;
     background: none;
     border: none;
-    padding: 5px;
+    padding: 0;
     cursor: pointer;
-    color: white;
+    color: var(--text-secondary);
     margin-left: auto;
-    display: none;
 }
 
 .email-button.expanded .copy-button {
     display: inline-flex;
 }
 
+.copy-button:hover {
+    color: var(--text-primary);
+}
+
 .copy-success {
+    display: none;
+    color: var(--secondary-color);
+    font-family: var(--font-mono);
     font-size: 0.8rem;
     margin-left: 0.5rem;
-    display: none;
-    color: white;
 }
 
 .copy-success.show {
     display: inline;
 }
 
+
+/* Expertise Cards */
+.expertise-section {
+    padding: 4rem 0;
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.expertise-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.expertise-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: var(--glow);
+}
+
+.expertise-icon {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.expertise-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+}
+
+/* Timeline & Experience */
+.experience-section,
+.education {
+    padding: 2rem 0;
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.card-body h2 {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    border-left: 4px solid var(--secondary-color);
+    padding-left: 1rem;
+}
+
+.timeline {
+    border-left: 2px solid var(--border-color);
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.6rem;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bg-dark);
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item h3 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+.company {
+    color: var(--primary-color);
+    font-family: var(--font-mono);
+    margin-bottom: 0.5rem;
+}
+
+.period {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+}
+
+.achievements li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.achievements li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+/* Skills */
+.skill-category {
+    margin-bottom: 2rem;
+}
+
+.skill-category-title {
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    background-color: rgba(148, 163, 184, 0.1);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.skill-tag:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: var(--primary-color);
+}
+
+/* Course Grid */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.course-category {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.course-category h5 {
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    margin-top: 0.5rem;
+}
+
 @media (max-width: 768px) {
-    .email-button.expanded {
-        min-width: 100%;
+    .profile-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .timeline {
+        padding-left: 1.5rem;
+        margin-left: 0;
+    }
+
+    .timeline-item::before {
+        left: -2.05rem;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
     }
 }

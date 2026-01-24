@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
-import '../styles/blog.css';
+import '../styles/competitive_programming.css';
 
 const Blogs = () => {
     const [posts, setPosts] = useState([]);
@@ -33,7 +33,7 @@ const Blogs = () => {
             <section className="section" style={{ minHeight: '60vh', paddingTop: '100px' }}>
                 <div className="container">
                     <div className="section-header">
-                        <h1 className="section-title gradient-text" style={{ fontSize: '2.5rem', marginBottom: '2rem', textAlign: "center" }}>Latest Blog Posts</h1>
+                        <h1 className="section-title gradient-text" style={{ fontSize: '2.5rem', marginBottom: '2rem', textAlign: "center" }}>Blogs</h1>
                     </div>
 
                     {loading && (
@@ -52,42 +52,96 @@ const Blogs = () => {
                         </div>
                     )}
 
-                    <div id="blog-posts" className="blog-grid" style={{
-                        display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "2rem"
-                    }}>
-                        {posts.map((post, index) => {
-                            const date = new Date(post.pubDate).toLocaleDateString('en-US', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
-                            });
-
-                            // Extract first image from content if available, or use placeholder
-                            const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
-                            const imgSrc = post.thumbnail || (imgMatch ? imgMatch[1] : null);
-
-                            return (
-                                <article className="blog-card" key={index} style={{
-                                    background: "white", borderRadius: "12px", boxShadow: "var(--shadow)",
-                                    padding: "1.5rem", transition: "transform 0.3s ease"
+                    <div className="collections-section" style={{ marginBottom: "3rem" }}>
+                        <h2 className="section-title gradient-text" style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: "left", display: "block", width: "100%" }}>Collections</h2>
+                        <div className="blog-grid active">
+                            {/* Featured Collection */}
+                            <article className="blog-card featured-card">
+                                <div className="blog-image-placeholder" style={{
+                                    width: '100%',
+                                    height: '200px',
+                                    background: 'linear-gradient(135deg, var(--bg-card) 0%, rgba(56, 189, 248, 0.1) 100%)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    borderBottom: '1px solid var(--border-color)'
                                 }}>
-                                    {imgSrc && <img src={imgSrc} alt={post.title} style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "8px", marginBottom: "1rem" }} />}
-                                    <h2 className="blog-title" style={{ fontSize: "1.25rem", marginBottom: "0.5rem" }}>
-                                        <a href={post.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "var(--text-color)", fontWeight: "600" }}>
-                                            {post.title}
+                                    <ExternalLink size={48} color="var(--primary-color)" />
+                                </div>
+                                <div className="blog-content">
+                                    <h2 className="blog-title">
+                                        <a href="https://github.com/tsunipun/image-processing-and-computer-vision" target="_blank" rel="noopener noreferrer">
+                                            Image Processing & Computer Vision Notes
                                         </a>
                                     </h2>
-                                    <time className="blog-date" style={{ color: "#666", fontSize: "0.9rem" }}>{date}</time>
-                                </article>
-                            )
-                        })}
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                                        A comprehensive collection of my study notes, tutorials, and implementations related to Image Processing and Computer Vision algorithms.
+                                    </p>
+                                    <time className="blog-date">GitHub Collection</time>
+                                </div>
+                            </article>
+
+                            {/* Medium Profile Card */}
+                            <article className="blog-card featured-card">
+                                <div className="blog-image-placeholder" style={{
+                                    width: '100%',
+                                    height: '200px',
+                                    background: 'linear-gradient(135deg, var(--bg-card) 0%, rgba(56, 189, 248, 0.1) 100%)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    borderBottom: '1px solid var(--border-color)'
+                                }}>
+                                    <ExternalLink size={48} color="var(--primary-color)" />
+                                </div>
+                                <div className="blog-content">
+                                    <h2 className="blog-title">
+                                        <a href="https://medium.com/@talukdersunipun" target="_blank" rel="noopener noreferrer">
+                                            View all blogs on Medium
+                                        </a>
+                                    </h2>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                                        Read more of my articles, tutorials, and thoughts on AI, Machine Learning, and Software Engineering on my Medium profile.
+                                    </p>
+                                    <time className="blog-date">Medium Profile</time>
+                                </div>
+                            </article>
+                        </div>
                     </div>
 
-                    <div className="view-all-blogs" style={{ textAlign: "center", marginTop: "3rem" }}>
-                        <a href="https://medium.com/@talukdersunipun" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem" }}>
-                            View all blogs on Medium <ExternalLink size={16} />
-                        </a>
+                    <div className="latest-posts-section">
+                        <h2 className="section-title gradient-text" style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: "left", display: "block", width: "100%" }}>Latest Blog Posts</h2>
+
+                        <div id="blog-posts" className="blog-grid active">
+                            {posts.map((post, index) => {
+                                const date = new Date(post.pubDate).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                });
+
+                                // Extract first image from content if available, or use placeholder
+                                const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
+                                const imgSrc = post.thumbnail || (imgMatch ? imgMatch[1] : null);
+
+                                return (
+                                    <article className="blog-card" key={index}>
+                                        {imgSrc && <img src={imgSrc} alt={post.title} className="blog-image" />}
+                                        <div className="blog-content">
+                                            <h2 className="blog-title">
+                                                <a href={post.link} target="_blank" rel="noopener noreferrer">
+                                                    {post.title}
+                                                </a>
+                                            </h2>
+                                            <time className="blog-date">{date}</time>
+                                        </div>
+                                    </article>
+                                )
+                            })}
+                        </div>
                     </div>
+
+
                 </div>
             </section>
             <style>{`

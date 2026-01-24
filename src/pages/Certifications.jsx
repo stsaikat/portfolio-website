@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExternalLink } from 'lucide-react';
-import '../styles/certifications.css';
+import '../styles/competitive_programming.css';
 
 const Certifications = () => {
     const certifications = [
@@ -88,33 +88,41 @@ const Certifications = () => {
 
     return (
         <div className="certifications-page">
-            <main className="certifications-container">
-                <h1 className="section-title">Certifications</h1>
-                <p className="section-subtitle">A collection of my professional certifications and completed courses</p>
+            <section className="certifications-hero">
+                <div className="container">
+                    <h1 className="section-title text-center">Certifications</h1>
+                    <p className="section-subtitle">A collection of my professional certifications and completed courses</p>
+                </div>
+            </section>
 
-                {certifications.map((cert, index) => (
-                    <div className="certification" key={index}>
-                        <div className="certification-thumbnail">
-                            <img src={cert.image} alt={cert.title} />
-                        </div>
-                        <div className="certification-content">
-                            <div className="certification-header">
-                                <h3>{cert.title}</h3>
+            <section className="certifications-list section">
+                <div className="container">
+                    <div className="grid">
+                        {certifications.map((cert, index) => (
+                            <div className="certification" key={index}>
+                                <div className="certification-thumbnail">
+                                    <img src={cert.image} alt={cert.title} />
+                                </div>
+                                <div className="certification-content">
+                                    <div className="certification-header">
+                                        <h3>{cert.title}</h3>
+                                    </div>
+                                    <div className="certification-meta">
+                                        <span className="certification-issuer">{cert.issuer}</span>
+                                        <span className="certification-date">{cert.date}</span>
+                                    </div>
+                                    <p className="certification-description">{cert.description}</p>
+                                    <div className="mt-auto">
+                                        <a href={cert.link} target="_blank" rel="noopener noreferrer" className="certification-link">
+                                            View Certificate <ExternalLink size={14} />
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="certification-meta">
-                                <span className="certification-issuer">{cert.issuer}</span>
-                                <span className="certification-date">{cert.date}</span>
-                            </div>
-                            <p className="certification-description">{cert.description}</p>
-                            <div className="mt-auto">
-                                <a href={cert.link} target="_blank" rel="noopener noreferrer" className="certification-link">
-                                    View Certificate <ExternalLink size={14} />
-                                </a>
-                            </div>
-                        </div>
+                        ))}
                     </div>
-                ))}
-            </main>
+                </div>
+            </section>
         </div>
     );
 };
