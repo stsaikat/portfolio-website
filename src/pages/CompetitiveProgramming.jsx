@@ -1,10 +1,15 @@
 import React from 'react';
-import { Code, Award, CheckCircle } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import { Trophy, Code, ExternalLink, Award, CheckCircle } from 'lucide-react';
 import '../styles/competitive_programming.css';
 
 const CompetitiveProgramming = () => {
     return (
         <div className="cp-page">
+            <Helmet>
+                <title>Competitive Programming - Sunipun Talukder</title>
+                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, and CodeChef." />
+            </Helmet>
             <section className="section cp-hero">
                 <div className="container">
                     <h1 className="section-title">Competitive Programming</h1>

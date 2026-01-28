@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { ExternalLink } from 'lucide-react';
 import '../styles/competitive_programming.css';
 
@@ -88,6 +89,10 @@ const Certifications = () => {
 
     return (
         <div className="certifications-page">
+            <Helmet>
+                <title>Certifications - Sunipun Talukder</title>
+                <meta name="description" content="Professional certifications in Deep Learning, Machine Learning, and Software Development." />
+            </Helmet>
             <section className="certifications-hero">
                 <div className="container">
                     <h1 className="section-title text-center">Certifications</h1>

@@ -1,9 +1,15 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
+import { ExternalLink, Github, Smartphone, Globe, Code } from 'lucide-react';
 import '../styles/projects.css';
 
 const Projects = () => {
     return (
         <div className="projects-page">
+            <Helmet>
+                <title>Projects - Sunipun Talukder</title>
+                <meta name="description" content="Showcase of my professional and personal projects in AI, App Development, and Web Technologies." />
+            </Helmet>
             <section className="projects-hero">
                 <div className="container">
                     <h1 className="section-title-hero">My Projects</h1>

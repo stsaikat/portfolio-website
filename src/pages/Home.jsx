@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Copy, Github, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import '../styles/about.css';
 import '../styles/home.css';
 
@@ -40,6 +41,10 @@ const Home = () => {
 
     return (
         <section className="hero">
+            <Helmet>
+                <title>Sunipun Talukder - Portfolio</title>
+                <meta name="description" content="Portfolio of Sunipun Talukder, Software Engineer specializing in AI, Deep Learning, and Computer Vision." />
+            </Helmet>
             <div className="container">
                 <div className="hero-grid">
                     <div className="hero-content">
@@ -56,11 +61,19 @@ const Home = () => {
                                     <div
                                         className={`email-button ${emailExpanded ? 'expanded' : ''}`}
                                         onClick={toggleEmail}
+                                        role="button"
+                                        tabIndex={0}
+                                        onKeyDown={(e) => {
+                                            if (e.key === 'Enter' || e.key === ' ') {
+                                                toggleEmail();
+                                            }
+                                        }}
+                                        aria-label="Show email address"
                                     >
                                         <Mail size={18} />
                                         <span className="email-text">Email</span>
                                         <span className="email-address">{email}</span>
-                                        <button className="copy-button" onClick={handleCopy}>
+                                        <button className="copy-button" onClick={handleCopy} type="button" aria-label="Copy email">
                                             <Copy size={16} />
                                         </button>
                                         <span className={`copy-success ${copySuccess ? 'show' : ''}`}>Copied!</span>
@@ -80,7 +93,7 @@ const Home = () => {
                             <div className="primary-actions">
                                 <Link to="/projects" className="btn btn-primary">View My Work</Link>
                                 <Link to="/about" className="btn btn-outline">About Me</Link>
-                                <Link to="/blogs.html" className="btn btn-outline">Blogs</Link>
+                                <Link to="/blogs" className="btn btn-outline">Blogs</Link>
                             </div>
                         </div>
                     </div>

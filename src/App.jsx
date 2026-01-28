@@ -14,19 +14,11 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="about.html" element={<About />} />
                     <Route path="about" element={<About />} />
-                    <Route path="projects.html" element={<Projects />} />
                     <Route path="projects" element={<Projects />} />
-
                     <Route path="cp" element={<CompetitiveProgramming />} />
-                    <Route path="competitive_programming.html" element={<CompetitiveProgramming />} />
-
                     <Route path="certifications" element={<Certifications />} />
-                    <Route path="certifications.html" element={<Certifications />} />
-
                     <Route path="blogs" element={<Blogs />} />
-                    <Route path="blogs.html" element={<Blogs />} />
 
                     {/* Add other routes here */}
                     <Route path="*" element={<NotFound />} />

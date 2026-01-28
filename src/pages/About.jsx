@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Github, Mail, Copy, Cpu, Eye, Smartphone, Activity, Book, Code, BarChart2, Grid } from 'lucide-react';
 import '../styles/about.css';
 
@@ -19,6 +20,10 @@ const About = () => {
 
     return (
         <div className="about-page">
+            <Helmet>
+                <title>About Me - Sunipun Talukder</title>
+                <meta name="description" content="Learn more about Sunipun Talukder, his background in Mathematics, and expertise in AI and Software Engineering." />
+            </Helmet>
             <section className="section about-hero">
                 <div className="container">
                     <div className="profile-header">
