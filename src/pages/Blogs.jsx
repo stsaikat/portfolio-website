@@ -63,40 +63,46 @@ const Blogs = () => {
                                 </div>
                                 <div className="blog-grid active">
                                     {/* Featured Collection */}
-                                    <article className="blog-card featured-card">
+                                    <a
+                                        href="https://github.com/tsunipun/image-processing-and-computer-vision"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="blog-card featured-card"
+                                    >
                                         <div className="blog-image-placeholder">
                                             <ExternalLink size={48} color="var(--primary-color)" />
                                         </div>
                                         <div className="blog-content">
                                             <h2 className="blog-title">
-                                                <a href="https://github.com/tsunipun/image-processing-and-computer-vision" target="_blank" rel="noopener noreferrer">
-                                                    Image Processing & Computer Vision Notes
-                                                </a>
+                                                Image Processing & Computer Vision Notes
                                             </h2>
                                             <p className="blog-desc">
                                                 A comprehensive collection of my study notes, tutorials, and implementations related to Image Processing and Computer Vision algorithms.
                                             </p>
                                             <time className="blog-date">GitHub Collection</time>
                                         </div>
-                                    </article>
+                                    </a>
 
                                     {/* Medium Profile Card */}
-                                    <article className="blog-card featured-card">
+                                    <a
+                                        href="https://medium.com/@talukdersunipun"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="blog-card featured-card"
+                                    >
                                         <div className="blog-image-placeholder">
                                             <ExternalLink size={48} color="var(--primary-color)" />
                                         </div>
                                         <div className="blog-content">
                                             <h2 className="blog-title">
-                                                <a href="https://medium.com/@talukdersunipun" target="_blank" rel="noopener noreferrer">
-                                                    View all blogs on Medium
-                                                </a>
+                                                View all blogs on Medium
                                             </h2>
                                             <p className="blog-desc">
                                                 Read more of my articles, tutorials, and thoughts on AI, Machine Learning, and Software Engineering on my Medium profile.
                                             </p>
                                             <time className="blog-date">Medium Profile</time>
                                         </div>
-                                    </article>
+                                    </a>
                                 </div>
                             </div>
 

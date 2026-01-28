@@ -18,13 +18,24 @@ I noticed you have a `CNAME` file with `www.sunipun.com`.
 
 ## How to Deploy
 
-Every time you want to update your live website, simply run:
+The deployment is now automated using GitHub Actions!
+
+1.  Push your changes to the `main` branch:
+    ```bash
+    git add .
+    git commit -m "Update website"
+    git push origin main
+    ```
+
+2.  Go to the "Actions" tab in your GitHub repository to see the deployment progress.
+3.  Once the "Deploy to GitHub Pages" workflow completes, your changes will be live.
+
+### Manual Deployment (Fallback)
+
+If you ever need to manually deploy, you can run:
 
 ```bash
 npm run deploy
 ```
 
-This command will:
-1.  Build your project (create the `dist` folder).
-2.  Push contents of `dist` (including your `CNAME`) to the `gh-pages` branch on GitHub.
-3.  Your site will be live at `www.sunipun.com` after a few minutes.
+This will build the project and push the `dist` folder to the `gh-pages` branch.
