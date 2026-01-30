@@ -139,6 +139,31 @@ const About = () => {
 
                     <div className="card mt-4">
                         <div className="card-body">
+                            <h2>Community & Leadership</h2>
+                            <div className="timeline">
+                                <div className="timeline-item">
+                                    <h3>Admin & Community Leader</h3>
+                                    <p className="company">Shuddho Social Org</p>
+                                    <p className="period">Present</p>
+                                    <ul className="achievements">
+                                        <li>Leading community development initiatives and fostering social responsibility.</li>
+                                        <li>Organizing events and managing volunteer teams for social impact projects.</li>
+                                    </ul>
+                                </div>
+                                <div className="timeline-item">
+                                    <h3>DS & Algorithms Mentor</h3>
+                                    <p className="company">Independent</p>
+                                    <ul className="achievements">
+                                        <li>Mentored over 200+ students in Data Structures and Algorithms.</li>
+                                        <li>Guided students to success in competitive programming and technical interviews.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="card mt-4">
+                        <div className="card-body">
                             <h2>Education</h2>
                             <div className="education">
                                 <div className="education-header">

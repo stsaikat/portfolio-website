@@ -315,6 +315,33 @@ const Projects = () => {
                                 <p>Collection of solved Codeforces problems organized by contests.</p>
                             </div>
                         </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="card-header">
+                                    <h4>Diffusion From Scratch</h4>
+                                    <div className="project-links">
+                                        <a href="https://github.com/tsunipun/diffusion-from-scratch" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>Implementation of diffusion models from scratch, demonstrating deep understanding of generative AI core concepts.</p>
+                            </div>
+                        </div>
+
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="card-header">
+                                    <h4>Resolution Estimator</h4>
+                                    <div className="project-links">
+                                        <a href="https://github.com/tsunipun/resolution-estimator" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>A specialized tool for estimating image resolution, essential for high-quality computer vision preprocessing pipelines.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
