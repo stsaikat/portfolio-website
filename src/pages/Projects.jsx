@@ -17,11 +17,27 @@ const Projects = () => {
                 </div>
             </section>
 
-            <section className="professional-projects">
+            <section className="featured-projects">
                 <div className="container">
-                    <h2 className="section-title">Professional Projects</h2>
+                    <h2 className="section-title">Featured Projects</h2>
                     <div className="grid grid-3">
                         <div className="card">
+                            <img src="/assets/imgs/projects/shuffle.png" alt="Shuffle - Random Video Chat" className="card-preview" />
+                            <div className="card-body">
+                                <div className="card-header">
+                                    <h4>Shuffle - Random Video Chat</h4>
+                                    <div className="project-links">
+                                        <a href="https://shuffle.sunipun.com/" target="_blank" rel="noopener noreferrer">
+                                            <i className="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>A real-time random video chat application featuring partner matching, skipping, and text messaging using WebRTC and Socket.io.</p>
+                            </div>
+                        </div>
+
+                        <div className="card">
+                            <img src="/assets/imgs/projects/cartoon_ai.png" alt="Cartoon AI" className="card-preview" />
                             <div className="card-body">
                                 <div className="card-header">
                                     <h4>Cartoon AI - AI Art Generator</h4>
@@ -41,25 +57,22 @@ const Projects = () => {
                         </div>
 
                         <div className="card">
+                            <img src="/assets/imgs/projects/chatbot.png" alt="Chatbot" className="card-preview" />
                             <div className="card-body">
                                 <div className="card-header">
-                                    <h4>Background Remover</h4>
+                                    <h4>Chatbot</h4>
                                     <div className="project-links">
-                                        <a href="https://play.google.com/store/apps/details?id=com.braincraftapps.droid.bgremover" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-google-play"></i>
+                                        <a href="https://github.com/stsaikat/chatbot" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-github"></i>
                                         </a>
                                     </div>
                                 </div>
-                                <ul className="project-bullets">
-                                    <li>Developed AI-powered background removal algorithms</li>
-                                    <li>Implemented efficient image processing techniques</li>
-                                    <li>Created optimized image manipulation pipelines</li>
-                                    <li>Enhanced performance for various device capabilities</li>
-                                </ul>
+                                <p>An easy-to-use chatbot powered by LLM (Large Language Model) for natural language interactions.</p>
                             </div>
                         </div>
 
                         <div className="card">
+                            <img src="/assets/imgs/projects/no_crop.png" alt="No Crop - Video & Pictures Fit" className="card-preview" />
                             <div className="card-body">
                                 <div className="card-header">
                                     <h4>No Crop - Video & Pictures Fit</h4>
@@ -75,6 +88,62 @@ const Projects = () => {
                                     <li>Created AI Denoise and Low-Light Enhancement</li>
                                     <li>Built Old Photos Restore and Face Restore capabilities</li>
                                     <li>Optimized image processing for high-quality results</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="card">
+                            <img src="/assets/imgs/projects/diffusion.png" alt="Diffusion From Scratch" className="card-preview" />
+                            <div className="card-body">
+                                <div className="card-header">
+                                    <h4>Diffusion From Scratch</h4>
+                                    <div className="project-links">
+                                        <a href="https://github.com/tsunipun/diffusion-from-scratch" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>Implementation of diffusion models from scratch, demonstrating deep understanding of generative AI core concepts.</p>
+                            </div>
+                        </div>
+
+                        <div className="card">
+                            <img src="/assets/imgs/projects/semantic_search.png" alt="Semantic Image Search" className="card-preview" />
+                            <div className="card-body">
+                                <div className="card-header">
+                                    <h4>Semantic Image Search</h4>
+                                    <div className="project-links">
+                                        <a href="https://github.com/stsaikat/semantic-image-search" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <p>A semantic-aware image search tool that uses AI to understand and find relevant images based on meaning.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="professional-projects">
+                <div className="container">
+                    <h2 className="section-title">Other Professional Works</h2>
+                    <div className="grid grid-3">
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="card-header">
+                                    <h4>Background Remover</h4>
+                                    <div className="project-links">
+                                        <a href="https://play.google.com/store/apps/details?id=com.braincraftapps.droid.bgremover" target="_blank" rel="noopener noreferrer">
+                                            <i className="fab fa-google-play"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <ul className="project-bullets">
+                                    <li>Developed AI-powered background removal algorithms</li>
+                                    <li>Implemented efficient image processing techniques</li>
+                                    <li>Created optimized image manipulation pipelines</li>
+                                    <li>Enhanced performance for various device capabilities</li>
                                 </ul>
                             </div>
                         </div>
@@ -160,22 +229,8 @@ const Projects = () => {
 
             <section className="personal-projects">
                 <div className="container">
-                    <h2 className="section-title">Personal Projects</h2>
+                    <h2 className="section-title">More Personal Projects</h2>
                     <div className="grid grid-3">
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="card-header">
-                                    <h4>Chatbot</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/chatbot" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>An easy-to-use chatbot powered by LLM (Large Language Model) for natural language interactions.</p>
-                            </div>
-                        </div>
-
                         <div className="card">
                             <div className="card-body">
                                 <div className="card-header">
@@ -187,20 +242,6 @@ const Projects = () => {
                                     </div>
                                 </div>
                                 <p>A library to make your classification training, validation, and testing process easier and more efficient.</p>
-                            </div>
-                        </div>
-
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="card-header">
-                                    <h4>Semantic Image Search</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/semantic-image-search" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A semantic-aware image search tool that uses AI to understand and find relevant images based on meaning.</p>
                             </div>
                         </div>
 
@@ -313,19 +354,6 @@ const Projects = () => {
                                     </div>
                                 </div>
                                 <p>Collection of solved Codeforces problems organized by contests.</p>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-body">
-                                <div className="card-header">
-                                    <h4>Diffusion From Scratch</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/tsunipun/diffusion-from-scratch" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>Implementation of diffusion models from scratch, demonstrating deep understanding of generative AI core concepts.</p>
                             </div>
                         </div>
 
