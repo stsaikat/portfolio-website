@@ -12,40 +12,46 @@
     font-weight: 800;
 }
 
-/* Card Grid */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: 2rem;
+/* Card Grid - Masonry Style */
+.masonry-grid-2 {
+    display: block;
+    column-count: 2;
+    column-gap: 2rem;
 }
 
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
+.masonry-grid-3 {
+    display: block;
+    column-count: 3;
+    column-gap: 2rem;
 }
 
 /* Project Card - Terminal/Code Style */
-.card {
+.project-card {
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     transition: var(--transition);
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+
+    /* Masonry Fixes */
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 2rem;
+    break-inside: avoid;
+
+    /* Internal Layout */
     position: relative;
+    overflow: hidden;
 }
 
-.card-preview {
+.project-card-preview {
     width: 100%;
     height: 180px;
     object-fit: cover;
     border-bottom: 1px solid var(--border-color);
+    display: block;
 }
 
-.card::before {
+.project-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -56,32 +62,29 @@
     transition: var(--transition);
 }
 
-.card:hover {
+.project-card:hover {
     transform: translateY(-6px);
     box-shadow: var(--shadow-hover);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
-.card:hover::before {
+.project-card:hover::before {
     background: var(--primary-color);
 }
 
-.card-body {
+.project-card-body {
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
-/* Card Header with "Window Controls" mock if desired, kept simple for now */
-.card-header {
+/* Card Header */
+.project-card-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     margin-bottom: 1rem;
 }
 
-.card-header h4 {
+.project-card-header h4 {
     color: var(--text-primary);
     font-size: 1.25rem;
     font-family: var(--font-sans);
@@ -119,7 +122,6 @@
 .project-bullets {
     padding-left: 0;
     margin-bottom: 1.5rem;
-    flex-grow: 1;
 }
 
 .project-bullets li {
@@ -142,16 +144,21 @@
 }
 
 /* Personal Project P tags */
-.card-body p {
+.project-card-body p {
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
-    flex-grow: 1;
+}
+
+@media (max-width: 1024px) {
+    .masonry-grid-3 {
+        column-count: 2;
+    }
 }
 
 @media (max-width: 768px) {
 
-    .grid-2,
-    .grid-3 {
-        grid-template-columns: 1fr;
+    .masonry-grid-2,
+    .masonry-grid-3 {
+        column-count: 1;
     }
 }
