@@ -1,22 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Github, Mail, Copy, Cpu, Eye, Smartphone, Activity, Book, Code, BarChart2, Grid } from 'lucide-react';
+import { Github, Cpu, Eye, Smartphone, Activity, Book, Code, BarChart2, Grid } from 'lucide-react';
+import EmailButton from '../components/EmailButton';
 import '../styles/about.css';
 
 const About = () => {
-    const [copySuccess, setCopySuccess] = useState(false);
-    const [emailExpanded, setEmailExpanded] = useState(false);
     const email = 'talukdersunipun@gmail.com';
-
-    const handleCopy = (e) => {
-        e.stopPropagation();
-        navigator.clipboard.writeText(email).then(() => {
-            setCopySuccess(true);
-            setTimeout(() => {
-                setCopySuccess(false);
-            }, 2000);
-        });
-    };
 
     return (
         <div className="about-page">
@@ -31,7 +20,7 @@ const About = () => {
                             <img src="/assets/imgs/profile-real.jpeg" alt="Sunipun Talukder" className="profile-image" />
                         </div>
                         <div className="profile-info">
-                            <h1>Sunipun Saikat</h1>
+                            <h1>Sunipun Talukder</h1>
                             <p className="lead">AI Engineer & Software Developer</p>
                             <p className="bio">I'm an AI Engineer and software developer, with a strong foundation in mathematics and a passion for solving real-world problems through artificial intelligence. I bring hands-on experience in machine learning, computer vision, and generative AI. Building systems used by millions of users globally.</p>
                             <div className="social-links">
@@ -39,20 +28,7 @@ const About = () => {
                                     <Github size={18} />
                                     <span>GitHub</span>
                                 </a>
-                                <div className="email-container">
-                                    <div
-                                        className={`email-button ${emailExpanded ? 'expanded' : ''}`}
-                                        onClick={() => setEmailExpanded(!emailExpanded)}
-                                    >
-                                        <Mail size={18} />
-                                        <span className="email-text">Email</span>
-                                        <span className="email-address">{email}</span>
-                                        <button className="copy-button" onClick={handleCopy}>
-                                            <Copy size={16} />
-                                        </button>
-                                        <span className={`copy-success ${copySuccess ? 'show' : ''}`}>Copied!</span>
-                                    </div>
-                                </div>
+                                <EmailButton email={email} />
                             </div>
                         </div>
                     </div>

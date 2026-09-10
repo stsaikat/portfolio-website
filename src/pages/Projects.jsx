@@ -1,7 +1,225 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { ExternalLink, Github, Smartphone, Globe, Code } from 'lucide-react';
+import { ExternalLink, Github, Smartphone } from 'lucide-react';
 import '../styles/projects.css';
+
+const LINK_ICONS = {
+    github: Github,
+    app: Smartphone,
+    web: ExternalLink,
+};
+
+const featuredProjects = [
+    {
+        title: 'Shuffle - Random Video Chat',
+        image: '/assets/imgs/projects/shuffle.webp',
+        link: 'https://shuffle.sunipun.com/',
+        linkType: 'web',
+        description: 'A real-time random video chat application featuring partner matching, skipping, and text messaging using WebRTC and Socket.io.',
+    },
+    {
+        title: 'Cartoon AI - AI Art Generator',
+        image: '/assets/imgs/projects/cartoon_ai.webp',
+        link: 'https://apps.apple.com/us/app/cartoon-ai-ai-art-generator/id6469111220',
+        linkType: 'app',
+        bullets: [
+            'Developed ML and AI pipelines using diffusion models',
+            'Implemented deep learning algorithms for image-to-cartoon conversion',
+            'Optimized performance for seamless processing',
+            'Ensured high-quality, scalable output results',
+        ],
+    },
+    {
+        title: 'Chatbot',
+        image: '/assets/imgs/projects/chatbot.webp',
+        link: 'https://github.com/stsaikat/chatbot',
+        linkType: 'github',
+        description: 'An easy-to-use chatbot powered by LLM (Large Language Model) for natural language interactions.',
+    },
+    {
+        title: 'No Crop - Video & Pictures Fit',
+        image: '/assets/imgs/projects/no_crop.webp',
+        link: 'https://apps.apple.com/us/app/no-crop-video-pictures-fit/id1333491559',
+        linkType: 'app',
+        bullets: [
+            'Implemented AI Photo Enhancer and Expander features',
+            'Developed Image Upscale and Deblur algorithms',
+            'Created AI Denoise and Low-Light Enhancement',
+            'Built Old Photos Restore and Face Restore capabilities',
+            'Optimized image processing for high-quality results',
+        ],
+    },
+    {
+        title: 'Diffusion From Scratch',
+        image: '/assets/imgs/projects/diffusion.webp',
+        link: 'https://github.com/tsunipun/diffusion-from-scratch',
+        linkType: 'github',
+        description: 'Implementation of diffusion models from scratch, demonstrating deep understanding of generative AI core concepts.',
+    },
+    {
+        title: 'Semantic Image Search',
+        image: '/assets/imgs/projects/semantic_search.webp',
+        link: 'https://github.com/stsaikat/semantic-image-search',
+        linkType: 'github',
+        description: 'A semantic-aware image search tool that uses AI to understand and find relevant images based on meaning.',
+    },
+];
+
+const professionalProjects = [
+    {
+        title: 'Background Remover',
+        link: 'https://play.google.com/store/apps/details?id=com.braincraftapps.droid.bgremover',
+        linkType: 'app',
+        bullets: [
+            'Developed AI-powered background removal algorithms',
+            'Implemented efficient image processing techniques',
+            'Created optimized image manipulation pipelines',
+            'Enhanced performance for various device capabilities',
+        ],
+    },
+    {
+        title: 'SlideShow Maker with Music Fx',
+        link: 'https://apps.apple.com/us/app/slideshow-maker-with-music-fx/id1265026847',
+        linkType: 'app',
+        bullets: [
+            'Developed filters using Metal framework for iOS',
+            'Implemented high-performance image processing',
+            'Created custom GLSL shaders for effects',
+            'Optimized rendering pipelines for smooth transitions',
+        ],
+    },
+    {
+        title: 'GIF Maker',
+        link: 'https://play.google.com/store/apps/details?id=com.braincraftapps.droid.gifmaker',
+        linkType: 'app',
+        bullets: [
+            'Developed video to GIF conversion module',
+            'Implemented GIF to video conversion',
+            'Created image to video transformation',
+            'Optimized performance for smooth conversions',
+        ],
+    },
+    {
+        title: 'Add Music to Video',
+        link: 'https://play.google.com/store/apps/details?id=com.braincraftapps.addmusictovideo',
+        linkType: 'app',
+        bullets: [
+            'Developed image-to-video conversion module',
+            'Implemented GLSL shaders for OpenGL ES',
+            'Created graphics drawing pipeline',
+            'Added filters and effects for enhanced visuals',
+        ],
+    },
+    {
+        title: 'Video Intro Maker',
+        link: 'https://play.google.com/store/apps/details?id=com.video_lab.video_intro_maker',
+        linkType: 'app',
+        bullets: [
+            'Led project design and architecture',
+            'Implemented video decoding and encoding',
+            'Developed audio processing capabilities',
+            'Maintained clean code and design patterns',
+        ],
+    },
+];
+
+const personalProjects = [
+    {
+        title: 'Classification Made Easy',
+        link: 'https://github.com/stsaikat/classification-made-easy',
+        linkType: 'github',
+        description: 'A library to make your classification training, validation, and testing process easier and more efficient.',
+    },
+    {
+        title: 'On-Device AI',
+        link: 'https://github.com/stsaikat/ondevice-ai',
+        linkType: 'github',
+        description: 'Projects and experiments with on-device AI implementations for mobile applications.',
+    },
+    {
+        title: 'Super Resolution',
+        link: 'https://github.com/stsaikat/super-resolution',
+        linkType: 'github',
+        description: 'AI-powered image super-resolution implementation for enhancing image quality.',
+    },
+    {
+        title: 'Image Manipulation',
+        link: 'https://github.com/stsaikat/image-manipulation',
+        linkType: 'github',
+        description: 'Collection of open-source works related to image manipulation and processing.',
+    },
+    {
+        title: 'OpenGL ES',
+        link: 'https://github.com/stsaikat/Open-GL-ES',
+        linkType: 'github',
+        description: 'A collection of OpenGL ES examples and implementations for Android.',
+    },
+    {
+        title: 'Video to Audio Converter',
+        link: 'https://github.com/stsaikat/videotoaudioconverter',
+        linkType: 'github',
+        description: 'A tool for converting video files to audio formats with various options.',
+    },
+    {
+        title: 'Video Editor',
+        link: 'https://github.com/stsaikat/videoeditor',
+        linkType: 'github',
+        description: 'A video editing tool with various features for video processing.',
+    },
+    {
+        title: 'Weekly Calendar',
+        link: 'https://github.com/stsaikat/weeklycalendar',
+        linkType: 'github',
+        description: 'A weekly calendar application for organizing and managing schedules.',
+    },
+    {
+        title: 'Codeforces Solutions',
+        link: 'https://github.com/stsaikat/Codeforces-problem-solutions',
+        linkType: 'github',
+        description: 'Collection of solved Codeforces problems organized by contests.',
+    },
+    {
+        title: 'Resolution Estimator',
+        link: 'https://github.com/tsunipun/resolution-estimator',
+        linkType: 'github',
+        description: 'A specialized tool for estimating image resolution, essential for high-quality computer vision preprocessing pipelines.',
+    },
+];
+
+const ProjectCard = ({ project }) => {
+    const LinkIcon = LINK_ICONS[project.linkType];
+
+    return (
+        <div className="project-card">
+            {project.image && (
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-card-preview"
+                    loading="lazy"
+                />
+            )}
+            <div className="project-card-body">
+                <div className="project-card-header">
+                    <h4>{project.title}</h4>
+                    <div className="project-links">
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.title}`}>
+                            <LinkIcon size={18} />
+                        </a>
+                    </div>
+                </div>
+                {project.description && <p>{project.description}</p>}
+                {project.bullets && (
+                    <ul className="project-bullets">
+                        {project.bullets.map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                        ))}
+                    </ul>
+                )}
+            </div>
+        </div>
+    );
+};
 
 const Projects = () => {
     return (
@@ -21,106 +239,9 @@ const Projects = () => {
                 <div className="container">
                     <h2 className="section-title">Featured Projects</h2>
                     <div className="masonry-grid-3">
-                        <div className="project-card">
-                            <img src="/assets/imgs/projects/shuffle.png" alt="Shuffle - Random Video Chat" className="project-card-preview" />
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Shuffle - Random Video Chat</h4>
-                                    <div className="project-links">
-                                        <a href="https://shuffle.sunipun.com/" target="_blank" rel="noopener noreferrer">
-                                            <i className="fas fa-external-link-alt"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A real-time random video chat application featuring partner matching, skipping, and text messaging using WebRTC and Socket.io.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <img src="/assets/imgs/projects/cartoon_ai.png" alt="Cartoon AI" className="project-card-preview" />
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Cartoon AI - AI Art Generator</h4>
-                                    <div className="project-links">
-                                        <a href="https://apps.apple.com/us/app/cartoon-ai-ai-art-generator/id6469111220" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-app-store"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Developed ML and AI pipelines using diffusion models</li>
-                                    <li>Implemented deep learning algorithms for image-to-cartoon conversion</li>
-                                    <li>Optimized performance for seamless processing</li>
-                                    <li>Ensured high-quality, scalable output results</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <img src="/assets/imgs/projects/chatbot.png" alt="Chatbot" className="project-card-preview" />
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Chatbot</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/chatbot" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>An easy-to-use chatbot powered by LLM (Large Language Model) for natural language interactions.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <img src="/assets/imgs/projects/no_crop.png" alt="No Crop - Video & Pictures Fit" className="project-card-preview" />
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>No Crop - Video & Pictures Fit</h4>
-                                    <div className="project-links">
-                                        <a href="https://apps.apple.com/us/app/no-crop-video-pictures-fit/id1333491559" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-app-store"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Implemented AI Photo Enhancer and Expander features</li>
-                                    <li>Developed Image Upscale and Deblur algorithms</li>
-                                    <li>Created AI Denoise and Low-Light Enhancement</li>
-                                    <li>Built Old Photos Restore and Face Restore capabilities</li>
-                                    <li>Optimized image processing for high-quality results</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <img src="/assets/imgs/projects/diffusion.png" alt="Diffusion From Scratch" className="project-card-preview" />
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Diffusion From Scratch</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/tsunipun/diffusion-from-scratch" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>Implementation of diffusion models from scratch, demonstrating deep understanding of generative AI core concepts.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <img src="/assets/imgs/projects/semantic_search.png" alt="Semantic Image Search" className="project-card-preview" />
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Semantic Image Search</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/semantic-image-search" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A semantic-aware image search tool that uses AI to understand and find relevant images based on meaning.</p>
-                            </div>
-                        </div>
+                        {featuredProjects.map((project) => (
+                            <ProjectCard project={project} key={project.title} />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -129,100 +250,9 @@ const Projects = () => {
                 <div className="container">
                     <h2 className="section-title">Other Professional Works</h2>
                     <div className="masonry-grid-3">
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Background Remover</h4>
-                                    <div className="project-links">
-                                        <a href="https://play.google.com/store/apps/details?id=com.braincraftapps.droid.bgremover" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-google-play"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Developed AI-powered background removal algorithms</li>
-                                    <li>Implemented efficient image processing techniques</li>
-                                    <li>Created optimized image manipulation pipelines</li>
-                                    <li>Enhanced performance for various device capabilities</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>SlideShow Maker with Music Fx</h4>
-                                    <div className="project-links">
-                                        <a href="https://apps.apple.com/us/app/slideshow-maker-with-music-fx/id1265026847" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-app-store"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Developed filters using Metal framework for iOS</li>
-                                    <li>Implemented high-performance image processing</li>
-                                    <li>Created custom GLSL shaders for effects</li>
-                                    <li>Optimized rendering pipelines for smooth transitions</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>GIF Maker</h4>
-                                    <div className="project-links">
-                                        <a href="https://play.google.com/store/apps/details?id=com.braincraftapps.droid.gifmaker" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-google-play"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Developed video to GIF conversion module</li>
-                                    <li>Implemented GIF to video conversion</li>
-                                    <li>Created image to video transformation</li>
-                                    <li>Optimized performance for smooth conversions</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Add Music to Video</h4>
-                                    <div className="project-links">
-                                        <a href="https://play.google.com/store/apps/details?id=com.braincraftapps.addmusictovideo" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-google-play"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Developed image-to-video conversion module</li>
-                                    <li>Implemented GLSL shaders for OpenGL ES</li>
-                                    <li>Created graphics drawing pipeline</li>
-                                    <li>Added filters and effects for enhanced visuals</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Video Intro Maker</h4>
-                                    <div className="project-links">
-                                        <a href="https://play.google.com/store/apps/details?id=com.video_lab.video_intro_maker" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-google-play"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <ul className="project-bullets">
-                                    <li>Led project design and architecture</li>
-                                    <li>Implemented video decoding and encoding</li>
-                                    <li>Developed audio processing capabilities</li>
-                                    <li>Maintained clean code and design patterns</li>
-                                </ul>
-                            </div>
-                        </div>
+                        {professionalProjects.map((project) => (
+                            <ProjectCard project={project} key={project.title} />
+                        ))}
                     </div>
                 </div>
             </section>
@@ -231,145 +261,9 @@ const Projects = () => {
                 <div className="container">
                     <h2 className="section-title">More Personal Projects</h2>
                     <div className="masonry-grid-3">
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Classification Made Easy</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/classification-made-easy" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A library to make your classification training, validation, and testing process easier and more efficient.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>On-Device AI</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/ondevice-ai" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>Projects and experiments with on-device AI implementations for mobile applications.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Super Resolution</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/super-resolution" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>AI-powered image super-resolution implementation for enhancing image quality.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Image Manipulation</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/image-manipulation" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>Collection of open-source works related to image manipulation and processing.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>OpenGL ES</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/Open-GL-ES" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A collection of OpenGL ES examples and implementations for Android.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Video to Audio Converter</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/videotoaudioconverter" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A tool for converting video files to audio formats with various options.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Video Editor</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/videoeditor" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A video editing tool with various features for video processing.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Weekly Calendar</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/weeklycalendar" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A weekly calendar application for organizing and managing schedules.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Codeforces Solutions</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/stsaikat/Codeforces-problem-solutions" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>Collection of solved Codeforces problems organized by contests.</p>
-                            </div>
-                        </div>
-
-                        <div className="project-card">
-                            <div className="project-card-body">
-                                <div className="project-card-header">
-                                    <h4>Resolution Estimator</h4>
-                                    <div className="project-links">
-                                        <a href="https://github.com/tsunipun/resolution-estimator" target="_blank" rel="noopener noreferrer">
-                                            <i className="fab fa-github"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <p>A specialized tool for estimating image resolution, essential for high-quality computer vision preprocessing pipelines.</p>
-                            </div>
-                        </div>
+                        {personalProjects.map((project) => (
+                            <ProjectCard project={project} key={project.title} />
+                        ))}
                     </div>
                 </div>
             </section>

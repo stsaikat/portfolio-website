@@ -10,21 +10,14 @@ const Blogs = () => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        const mediumUsername = '@talukdersunipun';
-        const rss2jsonApiUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${mediumUsername}`;
-
-        fetch(rss2jsonApiUrl)
+        fetch('/blog-posts.json')
             .then(response => response.json())
             .then(data => {
-                if (data.status === 'ok') {
-                    setPosts(data.items);
-                } else {
-                    setError(true);
-                }
+                setPosts(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.error('Error fetching blog posts:', err);
+                console.error('Error loading blog posts:', err);
                 setError(true);
                 setLoading(false);
             });
@@ -119,13 +112,9 @@ const Blogs = () => {
                                             day: 'numeric'
                                         });
 
-                                        // Extract first image from content if available, or use placeholder
-                                        const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
-                                        const imgSrc = post.thumbnail || (imgMatch ? imgMatch[1] : null);
-
                                         return (
                                             <article className="blog-card" key={index}>
-                                                {imgSrc && <img src={imgSrc} alt={post.title} className="blog-image" />}
+                                                {post.thumbnail && <img src={post.thumbnail} alt={post.title} className="blog-image" loading="lazy" />}
                                                 <div className="blog-content">
                                                     <h2 className="blog-title">
                                                         <a href={post.link} target="_blank" rel="noopener noreferrer">
