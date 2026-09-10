@@ -21,7 +21,12 @@
   "toph": {
     "rating": "Unrated",
     "problemsSolved": 5,
-    "rank": 18821,
+    "rank": 18822,
     "profileUrl": "https://toph.co/u/thestsaikat"
+  },
+  "lightoj": {
+    "problemsSolved": 80,
+    "tried": 88,
+    "profileUrl": "https://lightoj.com/user/thestsaikat"
   }
 }

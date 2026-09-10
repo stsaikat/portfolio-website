@@ -16,6 +16,7 @@ const HANDLES = {
     codechef: 'thestsaikat',
     leetcode: 'sunipun',
     toph: 'thestsaikat',
+    lightoj: 'thestsaikat',
 };
 
 async function fetchCodeforces(handle) {
@@ -126,6 +127,19 @@ async function fetchToph(handle) {
     };
 }
 
+async function fetchLightOJ(handle) {
+    const res = await fetch(`https://lightoj.com/api/v1/users/${handle}`);
+    if (!res.ok) throw new Error(`LightOJ returned ${res.status}`);
+    const { success, data } = await res.json();
+    if (!success || !data?.userStat) throw new Error('LightOJ user not found');
+
+    return {
+        problemsSolved: parseInt(data.userStat.isSolved, 10),
+        tried: parseInt(data.userStat.isTried, 10),
+        profileUrl: `https://lightoj.com/user/${handle}`,
+    };
+}
+
 async function main() {
     let existing = {};
     try {
@@ -134,7 +148,13 @@ async function main() {
         // no existing file yet, that's fine
     }
 
-    const fetchers = { codeforces: fetchCodeforces, codechef: fetchCodeChef, leetcode: fetchLeetCode, toph: fetchToph };
+    const fetchers = {
+        codeforces: fetchCodeforces,
+        codechef: fetchCodeChef,
+        leetcode: fetchLeetCode,
+        toph: fetchToph,
+        lightoj: fetchLightOJ,
+    };
     const result = { ...existing };
 
     for (const [platform, fetcher] of Object.entries(fetchers)) {

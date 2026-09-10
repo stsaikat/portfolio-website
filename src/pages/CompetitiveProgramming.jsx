@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Code, Award, CheckCircle, Trophy } from 'lucide-react';
+import { Code, Award, CheckCircle, Trophy, Lightbulb } from 'lucide-react';
 import '../styles/competitive_programming.css';
 
 const CompetitiveProgramming = () => {
@@ -17,8 +17,9 @@ const CompetitiveProgramming = () => {
     const cc = stats?.codechef;
     const lc = stats?.leetcode;
     const toph = stats?.toph;
+    const loj = stats?.lightoj;
 
-    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved, toph?.problemsSolved]
+    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved, toph?.problemsSolved, loj?.problemsSolved]
         .filter((n) => typeof n === 'number')
         .reduce((sum, n) => sum + n, 0);
 
@@ -26,7 +27,7 @@ const CompetitiveProgramming = () => {
         <div className="cp-page">
             <Helmet>
                 <title>Competitive Programming - Sunipun Talukder</title>
-                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, CodeChef, and Toph." />
+                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, CodeChef, Toph, and LightOJ." />
             </Helmet>
             <section className="section cp-hero">
                 <div className="container">
@@ -135,6 +136,27 @@ const CompetitiveProgramming = () => {
                                     </li>
                                 </ul>
                                 <a href="https://toph.co/u/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+
+                        <div className="cp-card">
+                            <div className="cp-card-header">
+                                <Lightbulb size={40} color="white" style={{ marginBottom: '1rem' }} />
+                                <h2>LightOJ</h2>
+                                <p className="handle">@thestsaikat</p>
+                            </div>
+                            <div className="cp-card-body">
+                                <ul className="cp-stats">
+                                    <li>
+                                        <span className="stat-label">Problems Solved</span>
+                                        <span className="stat-value">{loj?.problemsSolved ?? '-'}</span>
+                                    </li>
+                                    <li>
+                                        <span className="stat-label">Problems Tried</span>
+                                        <span className="stat-value">{loj?.tried ?? '-'}</span>
+                                    </li>
+                                </ul>
+                                <a href="https://lightoj.com/user/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
                             </div>
                         </div>
                     </div>
