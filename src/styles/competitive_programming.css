@@ -15,6 +15,10 @@
     gap: 2rem;
 }
 
+.grid-2 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
 .grid-3 {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
@@ -192,6 +196,42 @@
 .achievement-card h3 {
     color: var(--primary-color);
     margin-top: 1rem;
+}
+
+/* Skills (shared with About page's skill-tag design) */
+.skill-category {
+    margin-bottom: 2rem;
+}
+
+.skill-category-title {
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.skill-tag {
+    background-color: rgba(148, 163, 184, 0.1);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.skill-tag:hover {
+    background-color: rgba(56, 189, 248, 0.1);
+    border-color: var(--primary-color);
 }
 
 @media (min-width: 768px) {
