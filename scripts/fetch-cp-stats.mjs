@@ -17,6 +17,7 @@ const HANDLES = {
     leetcode: 'sunipun',
     toph: 'thestsaikat',
     lightoj: 'thestsaikat',
+    uhunt: 819609,
 };
 
 async function fetchCodeforces(handle) {
@@ -140,6 +141,21 @@ async function fetchLightOJ(handle) {
     };
 }
 
+async function fetchUhunt(uid) {
+    const res = await fetch(`https://uhunt.onlinejudge.org/api/ranklist/${uid}/0/1`);
+    if (!res.ok) throw new Error(`uHunt returned ${res.status}`);
+    const ranklist = await res.json();
+    const user = ranklist.find((u) => u.userid === uid);
+    if (!user) throw new Error('uHunt user not found in ranklist response');
+
+    return {
+        problemsSolved: user.ac,
+        submissions: user.nos,
+        rank: user.rank,
+        profileUrl: `https://uhunt.onlinejudge.org/id/${uid}`,
+    };
+}
+
 async function main() {
     let existing = {};
     try {
@@ -154,6 +170,7 @@ async function main() {
         leetcode: fetchLeetCode,
         toph: fetchToph,
         lightoj: fetchLightOJ,
+        uhunt: fetchUhunt,
     };
     const result = { ...existing };
 

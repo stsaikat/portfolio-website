@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Code, Award, CheckCircle, Trophy, Lightbulb } from 'lucide-react';
+import { Code, Award, CheckCircle, Trophy, Lightbulb, Target } from 'lucide-react';
 import '../styles/competitive_programming.css';
 
 const CompetitiveProgramming = () => {
@@ -18,8 +18,9 @@ const CompetitiveProgramming = () => {
     const lc = stats?.leetcode;
     const toph = stats?.toph;
     const loj = stats?.lightoj;
+    const uhunt = stats?.uhunt;
 
-    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved, toph?.problemsSolved, loj?.problemsSolved]
+    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved, toph?.problemsSolved, loj?.problemsSolved, uhunt?.problemsSolved]
         .filter((n) => typeof n === 'number')
         .reduce((sum, n) => sum + n, 0);
 
@@ -27,7 +28,7 @@ const CompetitiveProgramming = () => {
         <div className="cp-page">
             <Helmet>
                 <title>Competitive Programming - Sunipun Talukder</title>
-                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, CodeChef, Toph, and LightOJ." />
+                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, CodeChef, Toph, LightOJ, and UVa (uHunt)." />
             </Helmet>
             <section className="section cp-hero">
                 <div className="container">
@@ -157,6 +158,31 @@ const CompetitiveProgramming = () => {
                                     </li>
                                 </ul>
                                 <a href="https://lightoj.com/user/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+
+                        <div className="cp-card">
+                            <div className="cp-card-header">
+                                <Target size={40} color="white" style={{ marginBottom: '1rem' }} />
+                                <h2>uHunt</h2>
+                                <p className="handle">@stsaikat_SUST</p>
+                            </div>
+                            <div className="cp-card-body">
+                                <ul className="cp-stats">
+                                    <li>
+                                        <span className="stat-label">Problems Solved</span>
+                                        <span className="stat-value">{uhunt?.problemsSolved ?? '-'}</span>
+                                    </li>
+                                    <li>
+                                        <span className="stat-label">Submissions</span>
+                                        <span className="stat-value">{uhunt?.submissions ?? '-'}</span>
+                                    </li>
+                                    <li>
+                                        <span className="stat-label">Rank</span>
+                                        <span className="stat-value">{uhunt?.rank ? `#${uhunt.rank.toLocaleString()}` : '-'}</span>
+                                    </li>
+                                </ul>
+                                <a href="https://uhunt.onlinejudge.org/id/819609" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
                             </div>
                         </div>
                     </div>
