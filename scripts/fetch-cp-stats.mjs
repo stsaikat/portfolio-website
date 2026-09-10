@@ -15,6 +15,7 @@ const HANDLES = {
     codeforces: 'stsaikat',
     codechef: 'thestsaikat',
     leetcode: 'sunipun',
+    toph: 'thestsaikat',
 };
 
 async function fetchCodeforces(handle) {
@@ -104,6 +105,27 @@ async function fetchLeetCode(username) {
     };
 }
 
+async function fetchToph(handle) {
+    const res = await fetch(`https://toph.co/u/${handle}`, {
+        headers: { 'User-Agent': 'Mozilla/5.0' },
+    });
+    if (!res.ok) throw new Error(`Toph returned ${res.status}`);
+    const html = await res.text();
+
+    const solvedMatch = html.match(/dashlet__stat>(\d+) \/ (\d+)<\/div>Problems Solved/);
+    if (!solvedMatch) throw new Error('Could not find Toph problems-solved count');
+
+    const rankMatch = html.match(/Problems Solved<\/div><div class=dashlet__foot>Rank: (\d+)/);
+    const ratingMatch = html.match(/dashlet__stat>([^<]+)<\/div><\/div><div class=dashlet__foot><\/div>/);
+
+    return {
+        rating: ratingMatch ? ratingMatch[1] : null,
+        problemsSolved: parseInt(solvedMatch[1], 10),
+        rank: rankMatch ? parseInt(rankMatch[1], 10) : null,
+        profileUrl: `https://toph.co/u/${handle}`,
+    };
+}
+
 async function main() {
     let existing = {};
     try {
@@ -112,7 +134,7 @@ async function main() {
         // no existing file yet, that's fine
     }
 
-    const fetchers = { codeforces: fetchCodeforces, codechef: fetchCodeChef, leetcode: fetchLeetCode };
+    const fetchers = { codeforces: fetchCodeforces, codechef: fetchCodeChef, leetcode: fetchLeetCode, toph: fetchToph };
     const result = { ...existing };
 
     for (const [platform, fetcher] of Object.entries(fetchers)) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Code, Award, CheckCircle } from 'lucide-react';
+import { Code, Award, CheckCircle, Trophy } from 'lucide-react';
 import '../styles/competitive_programming.css';
 
 const CompetitiveProgramming = () => {
@@ -16,8 +16,9 @@ const CompetitiveProgramming = () => {
     const cf = stats?.codeforces;
     const cc = stats?.codechef;
     const lc = stats?.leetcode;
+    const toph = stats?.toph;
 
-    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved]
+    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved, toph?.problemsSolved]
         .filter((n) => typeof n === 'number')
         .reduce((sum, n) => sum + n, 0);
 
@@ -25,7 +26,7 @@ const CompetitiveProgramming = () => {
         <div className="cp-page">
             <Helmet>
                 <title>Competitive Programming - Sunipun Talukder</title>
-                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, and CodeChef." />
+                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, CodeChef, and Toph." />
             </Helmet>
             <section className="section cp-hero">
                 <div className="container">
@@ -109,6 +110,31 @@ const CompetitiveProgramming = () => {
                                     </li>
                                 </ul>
                                 <a href="https://leetcode.com/sunipun/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
+                            </div>
+                        </div>
+
+                        <div className="cp-card">
+                            <div className="cp-card-header">
+                                <Trophy size={40} color="white" style={{ marginBottom: '1rem' }} />
+                                <h2>Toph</h2>
+                                <p className="handle">@thestsaikat</p>
+                            </div>
+                            <div className="cp-card-body">
+                                <ul className="cp-stats">
+                                    <li>
+                                        <span className="stat-label">Rating</span>
+                                        <span className="stat-value">{toph?.rating ?? '-'}</span>
+                                    </li>
+                                    <li>
+                                        <span className="stat-label">Problems Solved</span>
+                                        <span className="stat-value">{toph?.problemsSolved ?? '-'}</span>
+                                    </li>
+                                    <li>
+                                        <span className="stat-label">Rank</span>
+                                        <span className="stat-value">{toph?.rank ? `#${toph.rank.toLocaleString()}` : '-'}</span>
+                                    </li>
+                                </ul>
+                                <a href="https://toph.co/u/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
                             </div>
                         </div>
                     </div>
