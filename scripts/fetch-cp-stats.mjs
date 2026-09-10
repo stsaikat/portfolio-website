@@ -58,16 +58,20 @@ async function fetchCodeChef(handle) {
     if (!ratingMatch) throw new Error('Could not find CodeChef rating data');
     const ratingHistory = JSON.parse(ratingMatch[1]);
     const maxRating = Math.max(...ratingHistory.map((r) => parseInt(r.rating, 10)));
+    const currentRating = parseInt(ratingHistory[ratingHistory.length - 1].rating, 10);
 
     const solvedMatch = html.match(/Total Problems Solved:\s*(\d+)/);
     if (!solvedMatch) throw new Error('Could not find CodeChef problems-solved count');
 
+    // The star badge on the profile page reflects current rating, not max —
+    // pairing it with maxRating would misrepresent the star tier.
     const starBlockMatch = html.match(/rating-star">([\s\S]*?)<\/div>/);
-    const stars = starBlockMatch ? (starBlockMatch[1].match(/&#9733;/g) || []).length : null;
+    const currentStars = starBlockMatch ? (starBlockMatch[1].match(/&#9733;/g) || []).length : null;
 
     return {
         maxRating,
-        stars,
+        currentRating,
+        currentStars,
         problemsSolved: parseInt(solvedMatch[1], 10),
         contests: ratingHistory.length,
         profileUrl: `https://www.codechef.com/users/${handle}`,

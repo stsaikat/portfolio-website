@@ -71,8 +71,12 @@ const CompetitiveProgramming = () => {
                             <div className="cp-card-body">
                                 <ul className="cp-stats">
                                     <li>
+                                        <span className="stat-label">Current Rating</span>
+                                        <span className="stat-value">{cc?.currentRating ?? '-'}{cc?.currentStars ? ` (${cc.currentStars}★)` : ''}</span>
+                                    </li>
+                                    <li>
                                         <span className="stat-label">Max Rating</span>
-                                        <span className="stat-value">{cc?.maxRating ?? '-'}{cc?.stars ? ` (${cc.stars}★)` : ''}</span>
+                                        <span className="stat-value">{cc?.maxRating ?? '-'}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Problems Solved</span>
