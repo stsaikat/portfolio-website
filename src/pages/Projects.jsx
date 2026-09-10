@@ -34,10 +34,10 @@ const featuredProjects = [
         image: '/assets/imgs/projects/chatbot.webp',
         link: 'https://github.com/stsaikat/chatbot',
         linkType: 'github',
-        description: 'An easy-to-use chatbot powered by LLM (Large Language Model) for natural language interactions.',
+        description: 'An easy-to-use chatbot powered by an LLM via LangChain, with a Gradio interface for natural language interactions.',
     },
     {
-        title: 'No Crop - Video & Pictures Fit',
+        title: 'Edit Up - AI Photo Video Editor',
         image: '/assets/imgs/projects/no_crop.webp',
         link: 'https://apps.apple.com/us/app/no-crop-video-pictures-fit/id1333491559',
         linkType: 'app',
@@ -89,7 +89,7 @@ const professionalProjects = [
         ],
     },
     {
-        title: 'GIF Maker',
+        title: 'GIF Maker & Editor - GifBuz',
         link: 'https://play.google.com/store/apps/details?id=com.braincraftapps.droid.gifmaker',
         linkType: 'app',
         bullets: [
@@ -100,7 +100,7 @@ const professionalProjects = [
         ],
     },
     {
-        title: 'Add Music to Video',
+        title: 'Add Music & Audio to Video',
         link: 'https://play.google.com/store/apps/details?id=com.braincraftapps.addmusictovideo',
         linkType: 'app',
         bullets: [
@@ -111,7 +111,7 @@ const professionalProjects = [
         ],
     },
     {
-        title: 'Video Intro Maker',
+        title: 'Intro Maker - Outro Video Maker',
         link: 'https://play.google.com/store/apps/details?id=com.video_lab.video_intro_maker',
         linkType: 'app',
         bullets: [
@@ -126,7 +126,7 @@ const professionalProjects = [
 const personalProjects = [
     {
         title: 'Classification Made Easy',
-        link: 'https://github.com/stsaikat/classification-made-easy',
+        link: 'https://github.com/tsunipun/classification-made-easy',
         linkType: 'github',
         description: 'A library to make your classification training, validation, and testing process easier and more efficient.',
     },
@@ -164,7 +164,7 @@ const personalProjects = [
         title: 'Video Editor',
         link: 'https://github.com/stsaikat/videoeditor',
         linkType: 'github',
-        description: 'A video editing tool with various features for video processing.',
+        description: 'Early-stage Android video editor project — project scaffolding and architecture for planned editing features.',
     },
     {
         title: 'Weekly Calendar',
@@ -176,13 +176,13 @@ const personalProjects = [
         title: 'Codeforces Solutions',
         link: 'https://github.com/stsaikat/Codeforces-problem-solutions',
         linkType: 'github',
-        description: 'Collection of solved Codeforces problems organized by contests.',
+        description: 'Collection of solved Codeforces problems from contest practice.',
     },
     {
         title: 'Resolution Estimator',
         link: 'https://github.com/tsunipun/resolution-estimator',
         linkType: 'github',
-        description: 'A specialized tool for estimating image resolution, essential for high-quality computer vision preprocessing pipelines.',
+        description: 'A trained model with a Gradio demo app for estimating image resolution, useful for computer vision preprocessing pipelines.',
     },
 ];
 
