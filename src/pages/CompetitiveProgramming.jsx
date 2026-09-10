@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Trophy, Code, ExternalLink, Award, CheckCircle } from 'lucide-react';
+import { Code, Award, CheckCircle } from 'lucide-react';
 import '../styles/competitive_programming.css';
 
 const CompetitiveProgramming = () => {
+    const [stats, setStats] = useState(null);
+
+    useEffect(() => {
+        fetch('/cp-stats.json')
+            .then((res) => res.json())
+            .then(setStats)
+            .catch((err) => console.error('Error loading CP stats:', err));
+    }, []);
+
+    const cf = stats?.codeforces;
+    const cc = stats?.codechef;
+    const lc = stats?.leetcode;
+
+    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved]
+        .filter((n) => typeof n === 'number')
+        .reduce((sum, n) => sum + n, 0);
+
     return (
         <div className="cp-page">
             <Helmet>
@@ -30,15 +47,15 @@ const CompetitiveProgramming = () => {
                                 <ul className="cp-stats">
                                     <li>
                                         <span className="stat-label">Max Rating</span>
-                                        <span className="stat-value">1767</span>
+                                        <span className="stat-value">{cf?.maxRating ?? '-'}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">550+</span>
+                                        <span className="stat-value">{cf?.problemsSolved ?? '-'}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Contests</span>
-                                        <span className="stat-value">70+</span>
+                                        <span className="stat-value">{cf?.contests ?? '-'}</span>
                                     </li>
                                 </ul>
                                 <a href="https://codeforces.com/profile/stsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
@@ -55,15 +72,15 @@ const CompetitiveProgramming = () => {
                                 <ul className="cp-stats">
                                     <li>
                                         <span className="stat-label">Max Rating</span>
-                                        <span className="stat-value">1844</span>
+                                        <span className="stat-value">{cc?.maxRating ?? '-'}{cc?.stars ? ` (${cc.stars}★)` : ''}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">300+</span>
+                                        <span className="stat-value">{cc?.problemsSolved ?? '-'}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Contests</span>
-                                        <span className="stat-value">20+</span>
+                                        <span className="stat-value">{cc?.contests ?? '-'}</span>
                                     </li>
                                 </ul>
                                 <a href="https://www.codechef.com/users/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
@@ -80,15 +97,15 @@ const CompetitiveProgramming = () => {
                                 <ul className="cp-stats">
                                     <li>
                                         <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">450+</span>
+                                        <span className="stat-value">{lc?.problemsSolved ?? '-'}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Badges</span>
-                                        <span className="stat-value">5+</span>
+                                        <span className="stat-value">{lc?.badges ?? '-'}</span>
                                     </li>
                                     <li>
                                         <span className="stat-label">Global Rank</span>
-                                        <span className="stat-value">Top 1%</span>
+                                        <span className="stat-value">{lc?.ranking ? `#${lc.ranking.toLocaleString()}` : '-'}</span>
                                     </li>
                                 </ul>
                                 <a href="https://leetcode.com/sunipun/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
@@ -113,7 +130,7 @@ const CompetitiveProgramming = () => {
                             <div className="achievement-card-body">
                                 <Award size={32} color="var(--secondary-color)" style={{ marginBottom: '1rem' }} />
                                 <h3>Problem Solving</h3>
-                                <p>Solved 2000+ problems across various platforms</p>
+                                <p>{totalSolved > 0 ? `Solved ${totalSolved.toLocaleString()}+ problems across various platforms` : 'Solved problems across various platforms'}</p>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,22 @@
+{
+  "codeforces": {
+    "maxRating": 1767,
+    "rank": "expert",
+    "problemsSolved": 555,
+    "contests": 70,
+    "profileUrl": "https://codeforces.com/profile/stsaikat"
+  },
+  "codechef": {
+    "maxRating": 1844,
+    "stars": 3,
+    "problemsSolved": 144,
+    "contests": 22,
+    "profileUrl": "https://www.codechef.com/users/thestsaikat"
+  },
+  "leetcode": {
+    "problemsSolved": 496,
+    "badges": 7,
+    "ranking": 213245,
+    "profileUrl": "https://leetcode.com/sunipun/"
+  }
+}
