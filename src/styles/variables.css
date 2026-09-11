@@ -18,10 +18,12 @@
     /* Slate 100 */
     --text-secondary: #94a3b8;
     /* Slate 400 */
-    --text-muted: #64748b;
-    /* Slate 500 */
+    --text-muted: #8b9ab1;
+    /* Lightened from Slate 500 (#64748b) to clear WCAG AA 4.5:1 on --bg-dark */
 
     --border-color: #334155;
+    --focus-ring: #7dd3fc;
+    /* Sky 300 - high contrast against both --bg-dark and --bg-card */
 
     /* Layout */
     --container-padding: 2rem;

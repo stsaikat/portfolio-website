@@ -1,46 +1,5 @@
-/* Shared Dark Theme Styles for CP, Blogs, Certs */
-
-/* Heroes */
-.cp-hero,
-.certifications-hero {
-    padding-top: 120px;
-    padding-bottom: 3rem;
-    text-align: center;
-    background: radial-gradient(circle at top, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
-}
-
-/* Responsive Grids */
-.grid {
-    display: grid;
-    gap: 2rem;
-}
-
-.grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.grid-3 {
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-}
-
-/* Cards (CP, Cert, Blog - unifying style) */
-.cp-card,
-.certification,
-.blog-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    overflow: hidden;
-}
-
-.cp-card:hover,
-.certification:hover,
-.blog-card:hover {
-    border-color: var(--primary-color);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-}
+/* Competitive Programming page. Shared card, grid and hero rules come from
+   shared.css, which this page also imports. */
 
 /* CP Specifics */
 .cp-card-header {
@@ -76,173 +35,19 @@
     font-family: var(--font-mono);
 }
 
+.cp-stats {
+    margin-bottom: 1.5rem;
+}
+
 .cp-stats li {
-    border-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Certifications Specifics */
-.certification {
     display: flex;
-    flex-direction: column;
-    /* Force vertical for cleaner mobile-first look */
-    height: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.certification-thumbnail {
-    /* Making thumbnail simpler for dark mode */
-    width: 100%;
-    height: 180px;
-    background-color: #000;
-    border-bottom: 1px solid var(--border-color);
-    padding: 0;
-    margin: 0;
-}
-
-.certification-thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.9;
-}
-
-.certification-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.certification h3 {
-    color: var(--text-primary);
-}
-
-.certification-issuer {
-    color: var(--primary-color);
-    font-family: var(--font-mono);
-}
-
-.certification-date {
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-}
-
-.certification-link {
-    color: var(--secondary-color);
-    font-family: var(--font-mono);
-    margin-top: auto;
-}
-
-/* Blog Specifics */
-.blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.blog-card {
-    padding: 0;
-    /* Remove default padding as flexible layout is used inside */
-    display: flex;
-    flex-direction: column;
-}
-
-.blog-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.blog-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.blog-title {
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
-.blog-title a {
-    color: var(--text-primary);
-    font-size: 1.25rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.blog-title a:hover {
-    color: var(--primary-color);
-}
-
-.blog-date {
-    font-family: var(--font-mono);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-top: auto;
-}
-
-/* Shared Achievement Cards */
-.achievement-card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    text-align: center;
-}
-
-.achievement-card h3 {
-    color: var(--primary-color);
-    margin-top: 1rem;
-}
-
-/* Skills (shared with About page's skill-tag design) */
-.skill-category {
-    margin-bottom: 2rem;
-}
-
-.skill-category-title {
-    font-family: var(--font-mono);
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.skill-tag {
-    background-color: rgba(148, 163, 184, 0.1);
-    color: var(--primary-color);
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    border: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.skill-tag:hover {
-    background-color: rgba(56, 189, 248, 0.1);
-    border-color: var(--primary-color);
-}
-
-@media (min-width: 768px) {
-    .certification {
-        flex-direction: row;
-    }
-
-    .certification-thumbnail {
-        width: 200px;
-        height: auto;
-        border-bottom: none;
-        border-right: 1px solid var(--border-color);
-    }
+.cp-stats li:last-child {
+    border-bottom: none;
 }

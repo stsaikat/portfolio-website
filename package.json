@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/fetch-blog-posts.mjs && node scripts/fetch-cp-stats.mjs && vite build && node scripts/prerender.mjs",
+    "build": "node scripts/fetch-blog-posts.mjs && node scripts/fetch-cp-stats.mjs && node scripts/generate-resume.mjs && vite build && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b gh-pages"
+    "deploy": "gh-pages -d dist -b gh-pages",
+    "assets": "node scripts/generate-assets.mjs",
+    "resume": "node scripts/generate-resume.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

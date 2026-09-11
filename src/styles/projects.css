@@ -12,17 +12,12 @@
     font-weight: 800;
 }
 
-/* Card Grid - Masonry Style */
-.masonry-grid-2 {
-    display: block;
-    column-count: 2;
-    column-gap: 2rem;
-}
-
-.masonry-grid-3 {
-    display: block;
-    column-count: 3;
-    column-gap: 2rem;
+/* Card grid. Source order is the order the reader sees, left to right. */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
 }
 
 /* Project Card - Terminal/Code Style */
@@ -32,13 +27,11 @@
     border-radius: var(--border-radius);
     transition: var(--transition);
 
-    /* Masonry Fixes */
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 2rem;
-    break-inside: avoid;
+    /* Let the body flex so the tech chips can pin to the bottom of every card,
+       giving each row of cards a common baseline. */
+    display: flex;
+    flex-direction: column;
 
-    /* Internal Layout */
     position: relative;
     overflow: hidden;
 }
@@ -74,6 +67,9 @@
 
 .project-card-body {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 /* Card Header */
@@ -84,7 +80,7 @@
     margin-bottom: 1rem;
 }
 
-.project-card-header h4 {
+.project-card-header h3 {
     color: var(--text-primary);
     font-size: 1.25rem;
     font-family: var(--font-sans);
@@ -149,16 +145,57 @@
     margin-bottom: 1.5rem;
 }
 
-@media (max-width: 1024px) {
-    .masonry-grid-3 {
-        column-count: 2;
-    }
+.projects-section {
+    padding-bottom: 1rem;
+}
+
+.projects-section-blurb {
+    color: var(--text-secondary);
+    max-width: 60ch;
+    margin-bottom: 2rem;
+}
+
+/* Headline number, so the result reads before the bullet list does */
+.project-metric {
+    display: inline-block;
+    margin-bottom: 1rem !important;
+    padding: 0.25rem 0.7rem;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    border-radius: 999px;
+    background-color: rgba(129, 140, 248, 0.1);
+    color: var(--secondary-color) !important;
+    font-family: var(--font-mono);
+    font-size: 0.78rem !important;
+    font-weight: 500;
+}
+
+/* Tech chips pinned to the bottom of each card */
+.project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 0.25rem;
+    list-style: none;
+}
+
+.project-stack li {
+    padding: 0.2rem 0.55rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    white-space: nowrap;
+}
+
+.project-card:hover .project-stack li {
+    border-color: rgba(56, 189, 248, 0.3);
+    color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
-
-    .masonry-grid-2,
-    .masonry-grid-3 {
-        column-count: 1;
+    .project-grid {
+        grid-template-columns: 1fr;
     }
 }

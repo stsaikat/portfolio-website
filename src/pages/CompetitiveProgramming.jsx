@@ -1,190 +1,101 @@
-import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import { Code, Award, CheckCircle, Trophy, Lightbulb, Target } from 'lucide-react';
+import Seo from '../components/Seo';
+import site from '../data/site';
+import { platforms, competencies } from '../data/cp';
+import '../styles/shared.css';
 import '../styles/competitive_programming.css';
+
+const ICONS = { Code, Award, CheckCircle, Trophy, Lightbulb, Target };
 
 const CompetitiveProgramming = () => {
     const [stats, setStats] = useState(null);
+    const [failed, setFailed] = useState(false);
 
     useEffect(() => {
+        let cancelled = false;
+
         fetch('/cp-stats.json')
-            .then((res) => res.json())
-            .then(setStats)
-            .catch((err) => console.error('Error loading CP stats:', err));
+            .then((res) => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })
+            .then((data) => !cancelled && setStats(data))
+            .catch((err) => {
+                if (cancelled) return;
+                console.error('Error loading CP stats:', err);
+                setFailed(true);
+            });
+
+        return () => {
+            cancelled = true;
+        };
     }, []);
 
-    const cf = stats?.codeforces;
-    const cc = stats?.codechef;
-    const lc = stats?.leetcode;
-    const toph = stats?.toph;
-    const loj = stats?.lightoj;
-    const uhunt = stats?.uhunt;
-
-    const totalSolved = [cf?.problemsSolved, cc?.problemsSolved, lc?.problemsSolved, toph?.problemsSolved, loj?.problemsSolved, uhunt?.problemsSolved]
+    const totalSolved = platforms
+        .map((platform) => stats?.[platform.key]?.problemsSolved)
         .filter((n) => typeof n === 'number')
         .reduce((sum, n) => sum + n, 0);
 
     return (
         <div className="cp-page">
-            <Helmet>
-                <title>Competitive Programming - Sunipun Talukder</title>
-                <meta name="description" content="My achievements and profiles in Competitive Programming platforms like Codeforces, LeetCode, CodeChef, Toph, LightOJ, and UVa (uHunt)." />
-            </Helmet>
+            <Seo
+                title={`Competitive Programming - ${site.name}`}
+                description="Competitive programming profiles and results across Codeforces, LeetCode, CodeChef, Toph, LightOJ and UVa (uHunt)."
+                path="/cp"
+            />
             <section className="section cp-hero">
                 <div className="container">
                     <h1 className="section-title">Competitive Programming</h1>
-                    <p className="text-center mb-4">Problem solving and algorithmic challenges across various platforms</p>
+                    <p className="text-center mb-4">
+                        Problem solving and algorithmic challenges across various platforms
+                    </p>
                 </div>
             </section>
 
             <section className="section cp-profiles">
                 <div className="container">
+                    {failed && (
+                        <p className="error-alert" role="alert">
+                            Live stats are unavailable right now — the profile links below still work.
+                        </p>
+                    )}
                     <div className="grid grid-3">
-                        <div className="cp-card">
-                            <div className="cp-card-header">
-                                <Code size={40} color="white" style={{ marginBottom: '1rem' }} />
-                                <h2>Codeforces</h2>
-                                <p className="handle">@stsaikat</p>
-                            </div>
-                            <div className="cp-card-body">
-                                <ul className="cp-stats">
-                                    <li>
-                                        <span className="stat-label">Max Rating</span>
-                                        <span className="stat-value">{cf?.maxRating ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">{cf?.problemsSolved ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Contests</span>
-                                        <span className="stat-value">{cf?.contests ?? '-'}</span>
-                                    </li>
-                                </ul>
-                                <a href="https://codeforces.com/profile/stsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
-                            </div>
-                        </div>
+                        {platforms.map((platform) => {
+                            const Icon = ICONS[platform.icon];
+                            const data = stats?.[platform.key];
 
-                        <div className="cp-card">
-                            <div className="cp-card-header">
-                                <Award size={40} color="white" style={{ marginBottom: '1rem' }} />
-                                <h2>CodeChef</h2>
-                                <p className="handle">@thestsaikat</p>
-                            </div>
-                            <div className="cp-card-body">
-                                <ul className="cp-stats">
-                                    <li>
-                                        <span className="stat-label">Max Rating</span>
-                                        <span className="stat-value">{cc?.maxRating ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">{cc?.problemsSolved ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Contests</span>
-                                        <span className="stat-value">{cc?.contests ?? '-'}</span>
-                                    </li>
-                                </ul>
-                                <a href="https://www.codechef.com/users/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
-                            </div>
-                        </div>
-
-                        <div className="cp-card">
-                            <div className="cp-card-header">
-                                <CheckCircle size={40} color="white" style={{ marginBottom: '1rem' }} />
-                                <h2>LeetCode</h2>
-                                <p className="handle">@sunipun</p>
-                            </div>
-                            <div className="cp-card-body">
-                                <ul className="cp-stats">
-                                    <li>
-                                        <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">{lc?.problemsSolved ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Badges</span>
-                                        <span className="stat-value">{lc?.badges ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Global Rank</span>
-                                        <span className="stat-value">{lc?.ranking ? `#${lc.ranking.toLocaleString()}` : '-'}</span>
-                                    </li>
-                                </ul>
-                                <a href="https://leetcode.com/sunipun/" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
-                            </div>
-                        </div>
-
-                        <div className="cp-card">
-                            <div className="cp-card-header">
-                                <Trophy size={40} color="white" style={{ marginBottom: '1rem' }} />
-                                <h2>Toph</h2>
-                                <p className="handle">@thestsaikat</p>
-                            </div>
-                            <div className="cp-card-body">
-                                <ul className="cp-stats">
-                                    <li>
-                                        <span className="stat-label">Rating</span>
-                                        <span className="stat-value">{toph?.rating ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">{toph?.problemsSolved ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Rank</span>
-                                        <span className="stat-value">{toph?.rank ? `#${toph.rank.toLocaleString()}` : '-'}</span>
-                                    </li>
-                                </ul>
-                                <a href="https://toph.co/u/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
-                            </div>
-                        </div>
-
-                        <div className="cp-card">
-                            <div className="cp-card-header">
-                                <Lightbulb size={40} color="white" style={{ marginBottom: '1rem' }} />
-                                <h2>LightOJ</h2>
-                                <p className="handle">@thestsaikat</p>
-                            </div>
-                            <div className="cp-card-body">
-                                <ul className="cp-stats">
-                                    <li>
-                                        <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">{loj?.problemsSolved ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Problems Tried</span>
-                                        <span className="stat-value">{loj?.tried ?? '-'}</span>
-                                    </li>
-                                </ul>
-                                <a href="https://lightoj.com/user/thestsaikat" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
-                            </div>
-                        </div>
-
-                        <div className="cp-card">
-                            <div className="cp-card-header">
-                                <Target size={40} color="white" style={{ marginBottom: '1rem' }} />
-                                <h2>uHunt</h2>
-                                <p className="handle">@stsaikat_SUST</p>
-                            </div>
-                            <div className="cp-card-body">
-                                <ul className="cp-stats">
-                                    <li>
-                                        <span className="stat-label">Problems Solved</span>
-                                        <span className="stat-value">{uhunt?.problemsSolved ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Submissions</span>
-                                        <span className="stat-value">{uhunt?.submissions ?? '-'}</span>
-                                    </li>
-                                    <li>
-                                        <span className="stat-label">Rank</span>
-                                        <span className="stat-value">{uhunt?.rank ? `#${uhunt.rank.toLocaleString()}` : '-'}</span>
-                                    </li>
-                                </ul>
-                                <a href="https://uhunt.onlinejudge.org/id/819609" target="_blank" rel="noopener noreferrer" className="btn btn-primary">View Profile</a>
-                            </div>
-                        </div>
+                            return (
+                                <div className="cp-card" key={platform.key}>
+                                    <div className="cp-card-header">
+                                        <Icon size={40} color="white" aria-hidden="true" style={{ marginBottom: '1rem' }} />
+                                        <h2>{platform.name}</h2>
+                                        <p className="handle">{platform.handle}</p>
+                                    </div>
+                                    <div className="cp-card-body">
+                                        <ul className="cp-stats">
+                                            {platform.stats.map(({ label, read }) => (
+                                                <li key={label}>
+                                                    <span className="stat-label">{label}</span>
+                                                    <span className="stat-value">
+                                                        {(data && read(data)) ?? '—'}
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <a
+                                            href={platform.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-primary"
+                                        >
+                                            View Profile
+                                            <span className="sr-only"> on {platform.name}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>
@@ -195,16 +106,24 @@ const CompetitiveProgramming = () => {
                     <div className="grid grid-2">
                         <div className="achievement-card">
                             <div className="achievement-card-body">
-                                <Award size={32} color="var(--secondary-color)" style={{ marginBottom: '1rem' }} />
-                                <h3>Expert Level at Codeforces</h3>
-                                <p>Achieved Expert Rating on Codeforces</p>
+                                <Award size={32} color="var(--secondary-color)" aria-hidden="true" style={{ marginBottom: '1rem' }} />
+                                <h3>Expert on Codeforces</h3>
+                                <p>
+                                    {stats?.codeforces?.maxRating
+                                        ? `Peak rating ${stats.codeforces.maxRating} across ${stats.codeforces.contests} rated contests`
+                                        : 'Achieved Expert rating on Codeforces'}
+                                </p>
                             </div>
                         </div>
                         <div className="achievement-card">
                             <div className="achievement-card-body">
-                                <Award size={32} color="var(--secondary-color)" style={{ marginBottom: '1rem' }} />
+                                <Award size={32} color="var(--secondary-color)" aria-hidden="true" style={{ marginBottom: '1rem' }} />
                                 <h3>Problem Solving</h3>
-                                <p>{totalSolved > 0 ? `Solved ${totalSolved.toLocaleString()}+ problems across various platforms` : 'Solved problems across various platforms'}</p>
+                                <p>
+                                    {totalSolved > 0
+                                        ? `Solved ${totalSolved.toLocaleString()}+ problems across ${platforms.length} judges`
+                                        : 'Solved problems across various platforms'}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -214,48 +133,16 @@ const CompetitiveProgramming = () => {
             <section className="section skills-section">
                 <div className="container">
                     <h2 className="section-title">Core Competencies</h2>
-
-                    <div className="skill-category">
-                        <h3 className="skill-category-title">Advanced</h3>
-                        <div className="skill-tags">
-                            <span className="skill-tag">Dynamic Programming</span>
-                            <span className="skill-tag">Divide and Conquer</span>
-                            <span className="skill-tag">Backtracking</span>
-                            <span className="skill-tag">Union Find</span>
-                            <span className="skill-tag">Trie</span>
-                            <span className="skill-tag">Monotonic Stack</span>
-                            <span className="skill-tag">Data Stream</span>
-                            <span className="skill-tag">Topological Sort</span>
+                    {competencies.map((group) => (
+                        <div className="skill-category" key={group.level}>
+                            <h3 className="skill-category-title">{group.level}</h3>
+                            <div className="skill-tags">
+                                {group.topics.map((topic) => (
+                                    <span className="skill-tag" key={topic}>{topic}</span>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-
-                    <div className="skill-category">
-                        <h3 className="skill-category-title">Intermediate</h3>
-                        <div className="skill-tags">
-                            <span className="skill-tag">Hash Table</span>
-                            <span className="skill-tag">Depth-First Search</span>
-                            <span className="skill-tag">Tree</span>
-                            <span className="skill-tag">Binary Tree</span>
-                            <span className="skill-tag">Math</span>
-                            <span className="skill-tag">Breadth-First Search</span>
-                            <span className="skill-tag">Greedy</span>
-                            <span className="skill-tag">Binary Search</span>
-                        </div>
-                    </div>
-
-                    <div className="skill-category">
-                        <h3 className="skill-category-title">Fundamental</h3>
-                        <div className="skill-tags">
-                            <span className="skill-tag">Array</span>
-                            <span className="skill-tag">String</span>
-                            <span className="skill-tag">Two Pointers</span>
-                            <span className="skill-tag">Sorting</span>
-                            <span className="skill-tag">Linked List</span>
-                            <span className="skill-tag">Stack</span>
-                            <span className="skill-tag">Matrix</span>
-                            <span className="skill-tag">Simulation</span>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
         </div>
